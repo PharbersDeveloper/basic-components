@@ -1,13 +1,13 @@
 {
   "name": "basic-components",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "使用 BP-UI-Parse 项目通过 JSON 文件生成，并做了进一步的修改.对应 BP-UI-Parse tag 为 0.0.1",
   "keywords": [
     "ember-addon"
   ],
   "repository": "",
   "license": "MIT",
-  "author": "",
+  "author": "Frank Wang",
   "directories": {
     "doc": "doc",
     "test": "tests"
