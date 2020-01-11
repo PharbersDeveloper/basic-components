@@ -1,0 +1,101 @@
+
+ @mixin  display-large { 
+    color: rgba(#091e42,0.95);
+    font-size: 29px;
+    font-weight: 500;
+ };
+ @mixin  title { 
+    color: rgba(#091e42,0.95);
+    font-size: 24px;
+    font-weight: 500;
+ };
+ @mixin  heading-learge { 
+    color: rgba(#091e42,0.95);
+    font-size: 20px;
+    font-weight: 500;
+ };
+ @mixin  heading-medium { 
+    color: rgba(#091e42,0.95);
+    font-size: 16px;
+    font-weight: 500;
+ };
+ @mixin  heading-small { 
+    color: rgba(#091e42,0.95);
+    font-size: 14px;
+    font-weight: 500;
+ };
+ @mixin  heading-xsmall { 
+    color: rgba(#091e42,0.60);
+    font-size: 12px;
+    font-weight: 500;
+ };
+ @mixin  body-primary { 
+    color: rgba(#091e42,0.95);
+    font-size: 14px;
+    font-weight: 500;
+ };
+ @mixin  body-secondary { 
+    color: rgba(#091e42,0.60);
+    font-size: 14px;
+    font-weight: 400;
+ };
+ @mixin  body-tertiary { 
+    color: rgba(#091e42,0.60);
+    font-size: 12px;
+    font-weight: 400;
+ };
+ @mixin  placeholder { 
+    color: rgba(#091e42,0.48);
+    font-size: 14px;
+    font-weight: 400;
+ };
+ @mixin  field_value { 
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+ };
+ @mixin  display-large-inverse { 
+    color: #ffffff;
+    font-size: 29px;
+    font-weight: 500;
+ };
+ @mixin  title-inverse { 
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 500;
+ };
+ @mixin  heading-large-inverse { 
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+ };
+ @mixin  heading-medium-inverse { 
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+ };
+ @mixin  heading-small-inverse { 
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+ };
+ @mixin  heading-xsmall-inverse { 
+    color: rgba(#ffffff, $opacity-90s);
+    font-size: 12px;
+    font-weight: 500;
+ };
+ @mixin  body-primary-inverse { 
+    color: rgba(#ffffff, $opacity-90s);
+    font-size: 14px;
+    font-weight: 400;
+ };
+ @mixin  body-secondary-inverse { 
+    color: rgba(#ffffff, $opacity-60s);
+    font-size: 14px;
+    font-weight: 400;
+ };
+ @mixin  body-tertiary-inverse { 
+    color: rgba(#ffffff, $opacity-40s);
+    font-size: 12px;
+    font-weight: 400;
+ };

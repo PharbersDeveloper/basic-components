@@ -1,0 +1,42 @@
+<div class="bp-table" id={{tid}}>
+        {{#if tableLeftFixed}}
+            <div style="box-shadow: 4px 0px 4px -4px rgba(0,0,0,.12);position:absolute;height:{{leftHeight}}px;width: {{leftWidth}}px;z-index:6;background:transparent;"></div>
+        {{else if tableRightFixed}}
+        <div style="right:0;box-shadow: -4px 0px 4px -4px rgba(0,0,0,.12);position:absolute;height:{{leftHeight}}px;width: {{rightWidth}}px;z-index:6;background:transparent;"></div>
+        {{/if}}
+       <EmberTable as |t|>
+       <t.head @sorts={{sorts}}
+       @onUpdateSorts='sortSowIcon'
+       @columns={{columns}} as |h|>
+            <h.row as |r|>
+                <r.cell as |column|>
+                        {{column.name}}
+                        {{#if column.isSortable}}
+                            {{#if column.isAscending}}
+                                {{svg-jar 'sort-asc' width='12px' height='12px' class='icon-margin-left'}}
+                            {{else if column.isDesending}}
+                                {{svg-jar 'sort-des' width='12px' height='12px' class='icon-margin-left'}}
+                            {{else}}
+                                {{svg-jar 'sort-default' width='12px' height='12px' class='icon-margin-left'}}
+                            {{/if}}
+                        {{/if}}
+
+                </r.cell>
+            </h.row>
+            </t.head>
+            <t.body @rows={{rows}} as |b|>
+                <b.row as |r|>
+                <r.cell as |cell column|>
+
+                    {{#if column.cellComponent}}
+                    {{#component column.cellComponent value=cell}}
+                        {{cell}}
+                    {{/component}}
+                    {{else}}
+                    {{cell}}
+                    {{/if}}
+                </r.cell>
+                </b.row>
+            </t.body>
+            </EmberTable>
+            </div>

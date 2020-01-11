@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>&gt;&gt;Feedback / Spinner / Spinner - Medium @1x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M12,24 C11.2636203,24 10.6666667,23.4030463 10.6666667,22.6666667 C10.6666667,21.930287 11.2636203,21.3333333 12,21.3333333 C17.1546577,21.3333333 21.3333333,17.1546577 21.3333333,12 C21.3333333,6.91926854 17.2688538,2.77432969 12.1986896,2.66873371 C12.1325553,2.66735634 12.0663233,2.66666667 12,2.66666667 C6.84534234,2.66666667 2.66666667,6.84534234 2.66666667,12 C2.66666667,12.7363797 2.069713,13.3333333 1.33333333,13.3333333 C0.596953667,13.3333333 0,12.7363797 0,12 C0,5.372583 5.372583,0 12,0 C12.0848342,0 12.169576,0.00088241356 12.2542161,0.00264520731 C18.7744616,0.138441929 24,5.46742371 24,12 C24,18.627417 18.627417,24 12,24 Z" id="path-1"></path>
+    </defs>
+    <g id="&gt;&gt;Feedback-/-Spinner-/-Spinner---Medium-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="spinner" fill="#505F79" xlink:href="#path-1"></use>
+    </g>
+</svg>

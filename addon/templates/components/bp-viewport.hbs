@@ -1,0 +1,14 @@
+{{cp-leaf ssc="ssc" disconnect="disconnect"}}
+        {{#if clickChange}}
+            <div onclick={{action "stepAction" "left"}} class='viewport-click-left'>{{svg-jar 'pre-year' width='24px' height='24px' class='icon-no-margin'}}</div>
+        {{/if}}
+        <div class="viewport-hidden-wrapper">
+            <div class="viewport-auto-wrapper">
+                <div class="viewport-nowarp">
+                    {{yield}}
+                </div>
+            </div>
+        </div>
+        {{#if clickChange}}
+            <div onclick={{action "stepAction" "right"}} class='viewport-click-right'>{{svg-jar 'next-year' width='24px' height='24px' class='icon-no-margin'}}</div>
+        {{/if}}

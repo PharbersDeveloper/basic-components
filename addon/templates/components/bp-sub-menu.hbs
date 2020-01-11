@@ -1,0 +1,5 @@
+<div class='bp-submenu-title'  {{action 'toggleShow'}}>
+{{svg-jar 'point' width='24px' height='24px' class='icon'}}
+<span>{{text}}</span>
+</div>
+<ul class={{if show 'menu-sub' 'd-none'}}>{{yield}}</ul>

@@ -1,0 +1,1712 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: $spacing-none;
+    padding: $spacing-none;
+}
+
+a {
+    font-size: $font-size-2;
+    color: $color-primary-b400;
+    line-height: 32px;
+    text-decoration: none;
+    text-align: center;
+}
+
+button {
+    outline: none;
+}
+
+.placeholder {
+    color: $color-neutrals-n090;
+    font-size: $font-size-2;
+    font-weight: $font-weight-regular;
+}
+
+.field_value  {
+    color: $color-neutrals-n500;
+    font-size: $font-size-2;
+    font-weight: $font-weight-regular;
+}
+
+/* button 通用样式 */
+button.button-primary {
+    background: $color-primary-b400;
+    color: $color-neutrals-n000;
+}
+
+.button-primary:hover {
+    background: $color-primary-b300;
+}
+
+.button-primary:active {
+    background: $color-primary-b500;
+}
+
+.button-primary .button-icon-color path {
+    fill: $color-neutrals-n000;
+}
+
+.button-primary:disabled .button-icon-color path{
+    fill: $color-neutrals-n060;
+}
+
+button.button-standard {
+    background: $color-neutrals-n020;
+    color: $color-neutrals-n400;
+}
+
+.button-standard:hover {
+    background: $color-neutrals-n030;
+}
+
+.button-standard:active {
+    background: $color-primary-b050;
+    color: $color-primary-b400;
+}
+
+.button-standard .button-icon-color path {
+    fill: $color-neutrals-n400;
+}
+
+.button-standard:disabled .button-icon-color path {
+    fill: $color-neutrals-n060;
+}
+
+.button-standard:active .button-icon-color path {
+    fill: $color-primary-b400;
+}
+
+.button-primary:disabled,.button-standard:disabled {
+    background: $color-neutrals-n020;
+    color: $color-neutrals-n060;
+    cursor: not-allowed;
+}
+
+
+button.button-subtle {
+    background: $color-neutrals-n000;
+    color: $color-neutrals-n400;
+}
+
+.button-subtle:hover {
+    background: $color-neutrals-n030;
+}
+
+.button-subtle:active {
+    background: $color-primary-b050;
+}
+
+.button-subtle:disabled {
+    color: $color-neutrals-n060;
+    cursor: not-allowed;
+}
+
+.button-subtle .button-icon-color path {
+    fill: $color-neutrals-n400;
+}
+
+.button-subtle:disabled .button-icon-color path {
+    fill: $color-neutrals-n060;
+}
+
+.button-subtle:active .button-icon-color path {
+    fill: $color-primary-b400;
+}
+
+.button-destructive {
+    background: $color-negative-r400;
+    color: $color-neutrals-n000;
+}
+
+.button-destructive:hover {
+    background: $color-negative-r300;
+}
+
+.button-destructive:active {
+    background: $color-negative-r500;
+}
+
+.button-warning {
+    background: $color-notice-y300;
+    color: $color-neutrals-n400;
+}
+
+.button-warning:hover {
+    background: $color-notice-y200;
+}
+
+.button-warning:active {
+    background: $color-notice-y400;
+}
+
+.button-density-comfy {
+    height: $size-density-comfy;
+    line-height: $size-5x;
+}
+
+.button-density-default {
+    height: $size-density-default;
+    line-height: 32px;
+}
+
+.button-density-compact {
+    height: $size-density-compact;
+    line-height: $size-3x;
+}
+
+/*button group*/
+
+.button-group .button-item {
+    background: $color-neutrals-n020;
+    color: $color-neutrals-n400;
+    font-size: $font-size-2;
+    outline: none;
+    cursor: pointer;
+    border: $border-none;
+    margin-right: $spacing-compact-1x;
+}
+
+.button-group button:first-child{
+    border-radius: $radius-medium $radius-none $radius-none $radius-medium;
+}
+
+.button-group button:last-child {
+    border-radius: $radius-none $radius-medium $radius-medium $radius-none;
+    margin-right: $spacing-none;
+}
+
+.button-group .button-item.active {
+    background: $color-neutrals-n400;
+    color: $color-neutrals-n000;
+}
+
+/*link 通用样式*/
+.link-disabled {
+    color: $color-neutrals-n060;
+    cursor: not-allowed;
+}
+
+.link-default {
+    color: $color-neutrals-n300;
+}
+
+.link-default:hover {
+    color: $color-neutrals-n080;
+}
+
+.link-default:active {
+    color: $color-neutrals-n400;
+}
+
+.link-primary {
+    color: $color-primary-b400;
+}
+
+.link-primary:hover {
+    color: $color-primary-b300;
+}
+
+.link-primary:active {
+    color: $color-primary-b500;
+}
+
+/*input 通用样式*/
+
+input:disabled {
+    background: $color-neutrals-n020 !important;
+    border: none !important;
+    color:  $color-neutrals-n060;
+    cursor: not-allowed;
+}
+
+.input-compact {
+    height: $size-3x !important;
+}
+
+.input-comfy {
+    height: $size-5x !important;
+}
+
+.input-default {
+    height: $size-4x !important;
+}
+
+.input-error {
+    border: $border-regular solid $color-negative-r400 !important;
+}
+
+.input-warning {
+    border: $border-regular solid $color-notice-y300 !important;
+}
+
+.input-success {
+    border: $border-regular solid $color-positive-g300 !important;
+}
+
+.input-info {
+    border: $border-regular solid $color-informative-p500 !important;
+}
+
+/* 滚动条样式设置 */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color-neutrals-n050;
+    border-radius: 10px;
+}
+
+.d-none {
+    display: none;
+}
+
+.tab-active {
+    color: $color-primary-b400 !important;
+}
+
+.tab-active::after {
+    position: absolute;
+    bottom: -1px;
+    left: $spacing-none;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $color-primary-b400;
+}
+
+.bp-submenu-title {
+    display: flex;
+    height: $size-5x;
+    align-items: center;
+    cursor: pointer;
+}
+
+.menu-sub {
+    padding-left: $spacing-5x;
+}
+
+.icon {
+    margin-right: $spacing-compact-6x;
+}
+
+.icon-small {
+    height: 18px;
+}
+
+.icon-small svg{
+    height: $size-2x;
+    width: $size-2x;
+}
+
+.icon-white path{    
+    fill: $color-neutrals-n000;
+}
+
+.icon-warning path {
+    fill: $color-notice-y300;
+}
+
+.icon-error path {
+    fill: $color-negative-r400;
+}
+
+.icon-info path {
+    fill: $color-primary-b400;
+}
+
+.icon-info-filled path {
+    fill: $color-primary-b400;
+}
+
+.icon-green path{
+    fill: $color-positive-g300;;
+}
+
+.icon-pointer {
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+input[type="radio"]+label {
+    font-size: $font-size-2;
+    color: $color-neutrals-n600;
+}
+
+input[type="radio"]+label::before {
+    content: "\a0";
+    /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: $spacing-compact-3x;
+    border-radius: $radius-circle;
+    border: $border-regular solid $color-neutrals-n040;
+    line-height: 1;
+}
+
+input[type="radio"]:checked+label::before {
+    background: $color-neutrals-n000;
+    border: 4px solid $color-primary-b400;
+    height: 4px;
+    width: 4px;
+    background-clip: content-box;
+}
+
+input[type="radio"]:disabled+label::before {
+    content: "\a0";
+    /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: $spacing-compact-3x;
+    border-radius: $radius-circle;
+    background: $color-neutrals-n020;
+    border: $border-regular solid $color-neutrals-n020;
+    line-height: 1;
+}
+
+input[type="radio"]:disabled:checked+label::before {
+    content: "\a0";
+    /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    width: 4px;
+    height: 4px;
+    margin: $spacing-compact-3x;
+    border-radius: $radius-circle;
+    background: $color-neutrals-n070;
+    border: 4px solid $color-neutrals-n020;
+}
+
+.bp-select-title {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    justify-content: space-between;
+}
+
+.bp-option-group {
+    margin: $spacing-none;
+    padding: $spacing-compact-2x $spacing-none;
+    background: $color-neutrals-n000;
+    box-shadow: 0 4px 8px -2px rgba(9, 30, 66, 0.25);
+    border-radius: 3px;
+}
+.bp-select:focus {
+    outline: none;
+}
+.option-active {
+    color: $color-neutrals-n000 !important;
+    background-color: $color-neutrals-n400 !important;
+}
+.option-active .icon path {
+    fill: $color-neutrals-n000;
+}
+
+input[type="checkbox"]+label::before {
+    content: "\a0";
+    /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 12px;
+    margin-right: .2em;
+    border-radius: .2em;
+    text-indent: .15em;
+    margin: $spacing-compact-3x;
+    line-height: .65;
+    /*行高不加单位，子元素将继承数字乘以自身字体尺寸而非父元素行高*/
+    background-image: url("/hospital-unchecked.svg");
+    background-size: 12px 12px;
+}
+
+input[type="checkbox"]:checked+label::before {
+    content: " ";
+    margin: $spacing-compact-3x;
+    background-image: url("/hospital-checked.svg");
+    background-size: 12px 12px;
+}
+
+input[type="checkbox"]:checked:disabled+label::before {
+    content: " ";
+    margin: $spacing-compact-3x;
+    background-image: url("/hospital-checked-disabled.svg");
+    background-size: 12px 12px;
+}
+
+input[type="checkbox"]:disabled+label::before {
+    content: " ";
+    height: 12px;
+    width: 12px;
+    background: $color-neutrals-n020;
+    border-radius: $radius-small;
+    margin: $spacing-compact-3x;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+input[type="checkbox"]+label {
+    font-size: $font-size-2;
+    color: $color-neutrals-n600;
+}
+
+/* status 通用样式 */
+
+.status-default.status-subtle {
+    background: $color-neutrals-n040;
+    color: $color-neutrals-n500;
+}
+
+.status-default.status-bold {
+    background: $color-neutrals-n500;
+    color: $color-neutrals-n000;
+}
+
+.status-success.status-subtle {
+    background: $color-positive-g050;
+    color: $color-positive-g500;
+}
+
+.status-success.status-bold {
+    background: $color-positive-g400;
+    color: $color-neutrals-n000;
+}
+
+.status-removed.status-subtle {
+    background: $color-negative-r050;
+    color: $color-negative-r500;
+}
+
+.status-removed.status-bold {
+    background: $color-negative-r400;
+    color: $color-neutrals-n000;
+}
+
+.status-in-progress.status-subtle {
+    background: $color-primary-b050;
+    color: $color-primary-b500;
+}
+
+.status-in-progress.status-bold {
+    background: $color-primary-b400;
+    color: $color-neutrals-n000;
+}
+
+.status-new.status-subtle {
+    background: $color-informative-p050;
+    color: $color-informative-p500;
+}
+
+.status-new.status-bold {
+    background: $color-informative-p400;
+    color: $color-neutrals-n000;
+}
+
+.status-moved.status-subtle {
+    background: $color-notice-y075;
+    color: $color-neutrals-n800;
+}
+
+.status-moved.status-bold {
+    background: $color-notice-y500;
+    color: $color-neutrals-n800;
+}
+
+
+/* tag 通用样式 */
+
+.tag-default.tag-subtle {
+    background: $color-neutrals-n030;
+    color: $color-neutrals-n600;
+}
+
+.tag-default.tag-bold {
+    background: $color-neutrals-n500;
+    color: $color-neutrals-n000;
+}
+
+.tag-blue.tag-subtle {
+    background: $color-primary-b075;
+    color: #0049B0;
+}
+
+.tag-blue.tag-bold {
+    background: $color-primary-b100;
+    color: $color-neutrals-n800;
+}
+.tag-green.tag-subtle {
+    background: $color-positive-g100;
+    color: $color-positive-g500;
+}
+
+.tag-green.tag-bold {
+    background: $color-positive-g200;
+    color: $color-neutrals-n800;
+}
+.tag-purple.tag-subtle {
+    background: $color-informative-p075;
+    color: $color-informative-p500;
+}
+
+.tag-purple.tag-bold {
+    background: $color-informative-p100;
+    color: $color-neutrals-n800;
+}
+.tag-teals.tag-subtle {
+    background: $color-accent-t100;
+    color: $color-neutrals-n600;
+}
+
+.tag-teals.tag-bold {
+    background: $color-accent-t200;
+    color: $color-neutrals-n800;
+}
+.tag-red.tag-subtle {
+    background: $color-negative-r075;
+    color: $color-neutrals-n800;
+}
+
+.tag-red.tag-bold {
+    background: $color-negative-r100;
+    color: $color-neutrals-n800;
+}
+.tag-yellow.tag-subtle {
+    background: $color-notice-y100;
+    color: $color-neutrals-n800;
+}
+
+.tag-yellow.tag-bold {
+    background: $color-notice-y200;
+    color: $color-neutrals-n800;
+}
+
+/* badge 通用样式 */
+.badge-default {
+    background: $color-neutrals-n040;
+    color: $color-neutrals-n700;
+}
+
+.badge-primary {
+    background: $color-primary-b400;
+    color: $color-neutrals-n000;
+}
+
+
+/* tooltip 通用样式 */
+.tooltip:hover::after {
+    background: $color-neutrals-n800;
+    border-radius: 3px;
+    font-size: $font-size-1;
+    color: $color-neutrals-n000;
+    line-height: 20px;
+    display: block;
+    position: relative;
+    padding: $spacing-none $spacing-compact-2x;
+}
+/* bp-charts styles */
+.bp-chart {
+    height: 100%;
+}
+
+/* bp-charts styles */
+
+.flex-alian-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.toast-inline-link {
+    color: inherit;
+    margin-left: 10px;
+    text-decoration: underline;
+}
+
+.icon-toast-warning path {
+    fill: $color-neutrals-n400;
+}
+
+/* toast 通用样式 */
+
+.toast {
+    width: 320px;
+    height: 56px;
+    line-height: 14px;
+    font-size: $font-size-2;
+    padding: $spacing-2x;
+    border-radius: 3px;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-compact-3x;
+}
+
+.toast-success {
+    color: $color-neutrals-n000;
+    background: #00865a;
+}
+
+.toast-warning {
+    color: $color-neutrals-n800;
+    background: $color-notice-y300;
+}
+
+.toast-error {
+    color: $color-neutrals-n000;
+    background: $color-negative-r400;
+}
+
+.toast-info {
+    color: $color-neutrals-n000;
+    background: #42516E;
+}
+
+/* modal 通用样式  */
+.modal-container {
+    width: 100vw;
+    height: 100vh;
+    background: $color-neutrals-n100;
+    z-index: $zindex-sticky;
+    position: fixed;
+    display: none;
+}
+
+.modal-container-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.modal {
+    background: $color-neutrals-n000;
+    box-shadow: 0 4px 8px -2px $color-neutrals-n050;
+    border-radius: $radius-medium;
+    padding: $spacing-3x $spacing-none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%;
+    z-index: $zindex-modal;
+    max-height: 90%;
+}
+
+.modal-small {
+    width: 400px;
+    margin-left: -200px;
+}
+
+.modal-medium {
+    width: 600px;
+    margin-left: -300px;
+}
+
+.modal-large {
+    width: 800px;
+    margin-left: -400px;
+}
+
+
+.modal-title {
+    width: 100%;
+    font-size: $font-size-4;
+    color: $color-neutrals-n800;
+    line-height: $size-3x;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* padding-bottom: 16px; */
+    padding: $spacing-none $spacing-3x $spacing-2x $spacing-3x;
+}
+
+.modal-title div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.modal-body {
+    font-size: $font-size-2;
+    color: $color-neutrals-n800;
+    text-align: left;
+    overflow-y: auto;
+    max-height: calc(90vh-136px);
+    padding: $spacing-none $spacing-2x;
+    margin-left: $spacing-1x;
+    margin-right: $spacing-1x;
+}
+
+.modal-footer {
+    /* padding-top: 16px; */
+    padding: $spacing-2x $spacing-3x $spacing-none $spacing-3x;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.modal-footer button {
+   height: $size-4x;
+    font-size: $font-size-2;
+    text-align: center;
+    line-height: 32px;
+    padding: $spacing-none $spacing-button-padding_h;
+    border: $border-none;
+    border-radius: $radius-medium;
+    outline: none;
+}
+
+.modal-footer .modal-subtle-btn {
+    color: $color-neutrals-n400;
+    background: $color-neutrals-n000;
+    margin-left: $spacing-compact-2x;
+}
+
+.modal-footer .modal-default-btn {
+    color: $color-neutrals-n000;
+    background: $color-primary-b400;
+}
+
+.modal-footer .modal-error-btn {
+    color: $color-neutrals-n000;
+    background: $color-negative-r400;
+}
+
+.modal-footer .modal-warning-btn {
+    color: $color-neutrals-n400;
+    background: $color-notice-y300;
+}
+
+.modal-fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+
+.modal-show {
+    opacity: 1;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+
+.modal-scrollable .modal-title{
+    border-bottom: $spacing-compact-1x solid #e7e9ed;
+}
+
+.modal-scrollable .modal-footer {
+    border-top: $spacing-compact-1x solid #e7e9ed;
+}
+
+.modal-scrollable .modal-body {
+    margin-top: $spacing-compact-6x;
+    margin-bottom: $spacing-compact-6x;
+}
+
+.modal-control-btn {
+   height: $size-4x;
+    font-size: $font-size-2;
+    text-align: center;
+    line-height: 32px;
+    padding: $spacing-none $spacing-button-padding_h;
+    border: $border-none;
+    border-radius: $radius-medium;
+    outline: none;
+    width: auto;
+    margin: $spacing-compact-2x;
+}
+
+/* popover通用样式 */
+
+
+.popover-container {
+    position: absolute;
+    display: none;
+    top: $spacing-none;
+    left: $spacing-none;
+    z-index: $zindex-popup;
+}
+
+.popover {
+    width: 320px;
+    padding: $spacing-2x;
+    background: $color-neutrals-n000;
+    box-shadow: 0 0 1px 0 rgba(9,30,66,0.12), 0 8px 16px -4px $color-neutrals-n050;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+.popover-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popover-title {
+    font-size: $font-size-2;
+    color: $color-neutrals-n800;
+    text-align: left;
+    font-weight: $font-weight-medium;
+}
+
+.popover-desc {
+    margin-top: $spacing-compact-6x;
+    font-size: $font-size-2;
+    color: $color-neutrals-n600;
+}
+
+.popover-footer {
+    margin-top: $spacing-1x;
+}
+
+.popover-footer a {
+    text-align: left;
+}
+
+.popover-footer button {
+    text-align: right;
+    height: $size-3x;
+    border-radius: $radius-medium;
+    border: $border-none;
+    font-size: $font-size-2;
+    color: $color-neutrals-n400;
+    text-align: center;
+    line-height: $size-3x;
+    position: relative;
+    left: 125px;
+    border-radius: $radius-medium;
+    outline: none;
+}
+
+.popover-footer button:last-child {
+    background: $color-neutrals-n020;
+}
+
+.popover-triangle {
+    height: 12px;
+    width: 12px;
+    transform: rotate(45deg);
+    background: $color-neutrals-n000;
+}
+
+.popover-triangle-left {
+    left: 314px;
+    top: 50%;
+    margin-top: -6px;
+    position: absolute;
+}
+
+.popover-triangle-left-top {
+    left: 314px;
+    top: $spacing-2x;
+    position: absolute;
+}
+
+.popover-triangle-left-bottom {
+    left: 314px;
+    bottom: $spacing-2x;
+    position: absolute;
+}
+
+.popover-triangle-bottom {
+    position: absolute;
+    top: -6px;
+    left: 152px;
+}
+
+.popover-triangle-bottom-left {
+    position: absolute;
+    top: -6px;
+    left: 16px;
+}
+
+.popover-triangle-bottom-right {
+    position: absolute;
+    top: -6px;
+    left: 288px;                                                                                                                                                                                                                                         
+}
+
+.popover-triangle-top {
+    position: absolute;
+    left: 152px;
+    bottom: -6px;
+}
+
+.popover-triangle-top-left {
+    position: absolute;
+    left: $spacing-2x;
+    bottom: -6px;
+}
+
+.popover-triangle-top-right {
+    position: absolute;
+    left: 288px;
+    bottom: -6px;
+}
+
+.popover-triangle-right {
+    position: absolute;
+    left: -6px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.popover-triangle-right-top {
+    position: absolute;
+    left: -6px;
+    top: $spacing-2x;
+}
+
+.popover-triangle-right-bottom {
+    position: absolute;
+    left: -6px;
+    bottom: $spacing-2x;
+}
+
+
+/* progress-trackerTrackr 通用样式 */
+.progress-tracker-container {
+    width: fit-content;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.progress-tracker-line {
+    margin: 0 55px;
+    background: $color-primary-b400;
+    border-radius: 24px;
+    height: $size-1x;
+    /* width: 170px; */
+    z-index: $zindex-sticky;
+}
+
+.progress-tracker-step {
+    margin-top: $spacing-1x;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.progress-tracker-step span {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    margin-right: 40px;
+    font-size: $font-size-2;
+    text-align: center;
+    line-height: $size-3x;
+    position: relative;
+}
+
+.progress-tracker-step-cur {
+    color: $color-primary-b400;
+}
+
+.progress-tracker-step-visited {
+    color: $color-neutrals-n800;
+}
+
+.progress-tracker-step-disabled {
+    color: $color-neutrals-n060;
+}
+
+.progress-tracker-step-unvisited {
+    color: $color-neutrals-n300;
+}
+
+
+.progress-tracker-step span::before {
+    content: " ";
+    width: $size-1x;
+    height: $size-1x;
+    border-radius: $radius-circle;
+    background: $color-neutrals-n080;
+    position: absolute;
+    right: 56px;
+    top: -16px;
+    z-index: $zindex-default;
+}
+
+.progress-tracker-step span:last-child {
+    margin-right: $spacing-none;
+}
+
+/*spinner 通用样式*/
+
+.spinner-container {
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+
+.spinner-background-gray {
+    background: rgba(9,30,66,0.55);
+}
+
+.spinner-background-white {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.full-window-spinner {
+    width: 100vw;
+    height: 100vh;
+    left: $spacing-none;
+    top: $spacing-none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.item-spinner {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.spinner-animate svg{
+    -webkit-animation: spinnerAnimate 1s linear infinite;
+    animation: spinnerAnimate 1s linear infinite;
+}
+
+@-webkit-keyframes spinnerAnimate {
+    0%{ -webkit-transform: rotate(0deg);}
+    50%{ -webkit-transform: rotate(180deg);}
+    100%{ -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spinnerAnimate {
+    0%{ transform: rotate(0deg);}
+    50%{ transform: rotate(180deg);}
+    100%{ transform: rotate(360deg);}
+}
+
+/*pagination style*/
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    align-items: center;
+    font-size: $font-size-2;
+    color: $color-neutrals-n400;
+}
+
+.pagination svg {
+    margin: $spacing-none;
+    cursor: pointer;
+}
+
+.pagination span {
+    height: $size-3x;
+    width: $size-3x;
+}
+
+.pagination-able svg path {
+    fill: $color-neutrals-n400;
+}
+
+.pagination-unable svg path {
+    fill: $color-neutrals-n060;;
+}
+
+.pagination-page {
+    letter-spacing: 0;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+
+}
+
+.pagination-active {
+    background: $color-neutrals-n400;
+    border-radius: 3px;
+    color: $color-neutrals-n000;
+    margin: $spacing-none $spacing-compact-2x;
+}
+
+.breadcrumbs-container {
+    max-width: 560px;
+    height: max-content;
+    font-size: $font-size-1;    
+    color: $color-neutrals-n200;
+    line-height: $size-2x;
+}
+
+.breadcrumbs-container div {
+    display: inline-block;
+    margin: $spacing-none $spacing-2x $spacing-none $spacing-none;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+}
+
+.breadcrumbs-container div a {
+    color: $color-neutrals-n200;
+}
+
+.breadcrumbs-container span {
+    margin: 0 4px;
+}
+
+
+.breadcrumbs-show {
+    cursor: pointer;
+}
+
+/*table 样式*/
+
+.ember-table table {
+    width: 100%;
+}
+
+.bp-table {
+    position: relative;
+    height: 100%;
+}
+
+.bp-table table th {
+    background: $color-neutrals-n000;
+    border-bottom: $border-medium solid $color-neutrals-n030;
+    color: $color-neutrals-n200;
+    font-size: $font-size-1;
+    padding: $spacing-1x;
+    text-align: left;
+}
+
+.bp-table table thead th {
+    top: 0px !important;
+}
+
+
+.bp-table table tbody tr:hover {
+    background: #ededf1;
+}
+
+.bp-table table tbody tr {
+    background: $color-neutrals-n000;
+}
+
+.bp-table table tbody td {   
+    background: inherit;
+    color: $color-neutrals-n600;
+    font-size: $font-size-2;
+    padding: $spacing-2x $spacing-1x;
+}
+
+.border-table table tbody td {
+    border-bottom: $border-regular solid $color-neutrals-n030;
+}
+
+.bp-table table th .et-sort-indicator::before {
+    display: inline-block;
+    border: $border-none;
+    line-height: 1;
+    content: '\25be';
+}
+
+.bp-table table th .is-descending::before{
+    transform: rotate(0);
+}
+
+.bp-table table th .is-ascending::before {
+    transform: rotate(180deg);
+}
+
+/* SpotLight */
+
+.spotlight-item {
+    border: $border-medium solid $color-informative-p300;
+    box-shadow: 0 0 0 6px rgba(101,84,192,0.40);
+    border-radius: $radius-medium;
+}
+
+.spotlight {
+    height: max-content;
+    width: 320px;
+    background: $color-informative-p300;
+    border-radius: $radius-medium;
+    padding: $spacing-2x;
+    position: absolute;
+    color: $color-neutrals-n800;
+    top: $spacing-none;
+    left: $spacing-none;
+}
+
+.spotlight div {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.spotlight p {
+    margin-top: 0;
+}
+
+.spotlight button {
+    height: $size-4x;
+    font-size: $font-size-2;
+    color: $color-neutrals-n800;
+    text-align: left;
+    background: $color-neutrals-n030;
+    border-radius: $radius-medium;
+    padding: $spacing-none $spacing-button-padding_h;
+    outline: none;
+}
+
+.spotlight span {
+    position: absolute;
+    left: $spacing-none;
+    bottom: 5px;
+}
+
+.spotlight .secondary-btn {
+    margin-right: $spacing-compact-2x;
+    border: $border-none;
+    background: transparent;
+     margin-right: $spacing-compact-2x;
+}
+
+.spotlight h3 {
+    font-size: $font-size-3;
+    color: $color-neutrals-n000;
+    margin-top: $spacing-none;
+    margin-bottom: $spacing-1x;
+}
+
+/*empty-state*/
+
+.empty-state {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.empty-state img {
+    height: 160px;
+    width: 160px;
+    background: #A1C6E7;
+    border-radius: $radius-large;
+    margin-bottom: $spacing-3x;
+}
+
+.empty-state .empty-state-title{
+    font-size: $font-size-4;
+    color: $color-neutrals-n800;
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+
+.empty-state .empty-state-desc {
+    font-size: $font-size-2;
+    color: $color-neutrals-n800;
+    text-align: center;
+    line-height: 20px;
+    width: 312px;
+    margin-bottom: $spacing-3x;
+    margin-top: $spacing-none;
+}
+
+.empty-state .empty-state-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: $spacing-3x;
+}
+
+.empty-state .empty-state-actions button {
+    border: $border-none;
+    border-radius: $radius-medium;
+    height: $size-4x;
+    padding: $spacing-none $spacing-button-padding_h;
+    font-size: $font-size-2;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 32px;
+}
+
+
+.empty-state .empty-state-btn-p {
+    color: $color-neutrals-n000;
+    background: $color-primary-b400;
+}
+
+.empty-state .empty-state-btn-s {
+    background: $color-neutrals-n020;
+    color: $color-neutrals-n400;
+    margin-left: 20px;
+}
+
+.empty-state a {
+    display: inline-block;
+    margin-bottom: $spacing-3x;
+}
+
+/*date picker 右侧的icon calendar*/
+.date-picker-icon {
+    position: absolute;
+    line-height: 32px;
+    right: $spacing-1x;
+    top: $spacing-compact-2x;
+}
+
+.date-picker-white+.date-picker-icon path{
+    fill: rgba(255,255,255,0.95);
+}
+
+.date-picker-white {
+    color: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.20);
+}
+
+.date-picker-input {
+    border: $border-none;
+    border-radius: $radius-medium;
+    font-size: $font-size-2;
+    height: $size-4x;
+    line-height: 32px;
+    outline: none;
+    padding: $spacing-compact-3x $spacing-text_field-padding_h;
+}
+
+.date-picker-default {
+    background: $color-neutrals-n020;
+    color: $color-neutrals-n090;
+}
+
+.date-picker-width-small {
+    width: 195px;
+}
+
+.date-picker-width-default {
+    width: 240px;
+}
+
+.date-picker-width-large {
+    width: 273px;
+}
+
+.positon-relative {
+    position: relative;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+/*add item style*/
+.add-item-input {
+    height: $size-5x;
+    width: 240px;
+    border: 1px solid $color-neutrals-n040;
+    border-radius: $radius-medium;
+    padding: 10px 8px;
+    font-size: $font-size-2;
+    color: $color-neutrals-n500;
+}
+
+.add-item-input:focus {
+    outline: none;
+    border: $border-regular solid $color-primary-b400;
+}
+
+.flex-direction-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*h small*/
+.add-item-label {
+    font-size: $font-size-2;
+    color: $color-neutrals-n800;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: $font-weight-medium;
+}
+
+/*body-secondary*/
+.add-item-desc {
+    font-size: $font-size-2;
+    color: $color-neutrals-n100;
+    margin-bottom: $spacing-1x;
+    display: block;
+}
+
+.add-item-cross-icon {
+    width: $size-3x;
+    height: $size-3x;
+    margin-left: $spacing-1x;
+}
+
+.add-item-main {
+    margin-bottom: $spacing-2x;
+}
+
+.add-item-text {
+    font-size: $font-size-2;
+    color: $color-neutrals-n060;
+    line-height: 32px;
+}
+
+.add-item-add-icon path{
+    fill: $color-neutrals-n060;
+}
+
+.add-item-footer {
+    margin-top: $spacing-compact-6x;
+    width: fit-content;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* bp-badge styles */
+.bp-badge.primary {
+    background-color: $color-primary-b400;
+    color: $color-neutrals-n000;
+}
+.bp-badge.primary.reverse {
+    color: $color-primary-b400;
+    background-color: $color-neutrals-n000;
+}
+/* bp-badge */
+
+
+.textColorRed {
+    color: $color-negative-r300 !important;
+}
+
+.display-none {
+    display: none;
+}
+
+/* middle components 这个实现不好，之后可以删除*/
+.card-size-b {
+    height: auto !important;
+    width: 893px !important;
+}
+
+.card-size-b .bp-card-title-part{
+    height: 93px !important;
+    flex-direction: column !important;
+    align-items: start !important;
+    justify-content: center !important;
+}
+
+.card-size-b .heading-medium  {
+    margin-bottom: $spacing-compact-3x;
+}
+
+.card-size-b .bp-card-title-desc {
+    margin-left: $spacing-none !important;
+}
+
+.card-size-b .bp-button-group {
+    display: none;
+}
+
+.card-size-c,.card-size-d {
+    width: 435px !important;
+    height: auto !important;
+}
+
+.card-size-c .bp-card-title-part,.card-size-d .bp-card-title-part{
+    height: $size-10x !important;
+    flex-direction: column !important;
+    align-items: start !important;
+    justify-content: center !important;
+}
+
+.card-size-c .heading-medium,.card-size-d .heading-medium  {
+    margin-bottom: $spacing-compact-1x;
+}
+
+.card-size-c .bp-card-title-desc,.card-size-d .bp-card-title-desc {
+    margin-left: $spacing-none !important;
+}
+
+.card-size-a .bp-button-group, .card-size-b .bp-button-group,.card-size-c .bp-button-group {
+    display: none;
+}
+
+/** layout 相关类 */
+
+.wrap {
+    flex: wrap;
+}
+.main-flex-start {
+    justify-content: flex-start;
+}
+.main-flex-end {
+    justify-content: flex-end;
+}
+.main-center {
+    justify-content: center;
+}
+.main-space-between {
+    justify-content: space-between;
+}
+.main-space-around {
+    justify-content: space-around;
+}
+.cross-flex-start {
+    align-items: flex-start;
+}
+.cross-flex-end {
+    align-items: flex-end;
+}
+.cross-center {
+    align-items: center;
+}
+.cross-baseline {
+    align-items: baseline;
+}
+.cross-stretch {
+    align-items: stretch;
+}
+.wrap-flex-start {
+    align-content: flex-start;
+}
+.wrap-flex-end {
+    align-content: flex-end;
+}
+.wrap-center {
+    align-content: center;
+}
+.wrap-space-between {
+    align-content: space-between;
+}
+.wrap-space-around {
+    align-content: space-around;
+}
+.wrap-stretch {
+    align-content: stretch;
+}
+/** end layout 相关类 */
+
+.viewport-class {
+    background: transparent;
+    position: relative;
+}
+
+.viewport-class .icon-no-margin {
+    margin: $spacing-none;
+}
+
+.viewport-hidden-wrapper {
+    overflow: hidden;
+    position: relative; 
+    height: 100%;
+    width: 100%;
+}
+
+.viewport-auto-wrapper {
+    overflow: auto;
+    height: 100%; 
+    width: 100%;
+    scroll-behavior:smooth;
+}
+
+.viewport-click-right {
+    height: 100%;
+    width: $size-3x;
+    position: absolute;
+    right: $spacing-none;
+    top: $spacing-none;
+    z-index: $zindex-sticky;
+    display: flex;
+    align-items: center;
+}
+
+.viewport-click-left {
+    height: 100%;
+    width: $size-3x;
+    position: absolute;
+    left: $spacing-none;
+    top: $spacing-none;
+    z-index: $zindex-sticky;
+    display: flex;
+    align-items: center;
+}
+
+.viewport-nowarp {
+    white-space: nowrap;
+}
+
+.viewport-nowarp div {
+    display: inline-block;
+}
+
+/*隐藏滚动条 记得适配主流浏览器*/
+.viewport-auto-wrapper::-webkit-scrollbar {
+    /* display: none;    */
+}
+
+.report-product-card-active {
+    background: $color-primary-b500 !important;
+}
+
+
+.report-product-card-active .product-card-title, 
+.report-product-card-active .product-ei-text,
+.report-product-card-active .product-ei-data,
+.report-product-card-active .product-sales-text,
+.report-product-card-active .product-sales-sata-number,
+.report-product-card-active .product-sales-data-percent {
+    color: $color-neutrals-n000 !important;
+}
+
+.report-product-card-active .product-sales-data-mn {
+    color: rgba(255,255,255,0.45) !important;
+}
+
+.report-product-card-active .bp-icon path{
+    fill: $color-neutrals-n000 !important;
+}
+
+.report-product-card-active .bp-product-card-tag {
+    background: $color-neutrals-n000 !important;
+    color: $color-primary-b500 !important;
+}
