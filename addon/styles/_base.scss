@@ -1710,3 +1710,246 @@ input[type="checkbox"]+label {
     background: $color-neutrals-n000 !important;
     color: $color-primary-b500 !important;
 }
+
+/* ph office */
+.ph-H-xLarge {
+    font-size: 40px;
+    font-weight: 200;
+    color: #2D334D;
+}
+
+.ph-H-Large {
+    font-size: 24px;
+    color: #747789;
+}
+
+.ph-H-Large_brand { 
+    font-size: 24px;
+    color: #F5C924;
+}
+
+.ph-H-Large_2 {
+    font-size: 24px;
+    color: #2D334D;
+}
+
+.ph-H-Medium {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2D334D;
+}
+
+.ph-H-Small {
+    font-size: 12px;
+    color: #454A61;
+}
+
+.ph-H-Small_brand {
+    font-size: 12px;
+    color: #FFDD4D;
+}
+
+.ph-body-medium {
+    font-size: 16px;
+    color: #747789;
+}
+
+.ph-body-small {
+    font-size: 14px;
+    color: #747789;
+}
+
+.ph-body-xsmall {
+    font-size: 12px;
+    color: #747789;
+}
+
+.ph-body-xsmall-tertiary {
+    font-size: 12px;
+    color: #A2A5B0;
+}
+
+.ph-H-Display {
+    font-size: 48px;
+    color: #2D334D;
+    letter-spacing: 1px;
+    text-shadow: 0 9px 14px rgba(22,28,57,0.30);
+}
+
+.ph-body-Display-number {
+    font-weight: 200;
+    font-size: 24px;
+    color: #2D334D;
+}
+
+.ph-H-xLarge-inverse {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ph-H-Large-inverse {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.ph-H-Large-2-inverse {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ph-H-Medium-inverse {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.pb-H-small {
+    font-size: 12px;
+    color: #161C39;
+    opacity: 0.8;
+}
+
+.ph-body-small-inverse {
+    opacity: 0.7;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.ph-body-2-inverse {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ph-body-3-inverse {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pb-H-small_brand{
+    font-size: 12px;
+    color: #FFDD4D;
+    letter-spacing: 1px;
+}
+
+.ph-H-Decoration {
+    font-family: Anton-Regular;
+    font-size: 100px;
+    color: #FFFFFF;
+    letter-spacing: 2.5px;
+    opacity: 0.4;
+}
+
+.ph-body-Display-point {
+    opacity: 0.4;
+    font-family: Lato-Light;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+
+.ph-H-Small_theme {
+    font-size: 14px;
+    color: #F5C924;
+}
+
+.ph-H-xLarge-inverse-position {
+    position: relative;
+    top: -80px;
+}
+
+.ph-H-Large-2-inverse-positon {
+    position: relative;
+    top: -50px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-width-1 {
+    width: 198px;
+}
+
+.ph-above-data-review-year {
+    opacity: 0.2;
+    font-size: 48px;
+    color: #161C39;
+}
+
+.mr-5 {
+    margin-right: 32px;
+}
+
+.mr-2 {
+    margin-right: 8px;
+}
+
+.ml-6 {
+    margin-left: 40px;
+}
+
+.mb-5 {
+    margin-bottom: 32px;
+}
+
+.mb-4 {
+    margin-bottom: 24px;
+}
+
+.mb-3 {
+    margin-bottom: 16px;
+}
+
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+.mb-1 {
+    margin-bottom: 4px;
+}
+
+.mt-3 { 
+    margin-top: 16px;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+.ml-4 {
+    margin-left: 24px;
+}
+
+.max-padding-top {
+    padding-top: 28px;
+}
+
+.pr-3 {
+    padding-right: 16px;
+}
+
+.pl-3 {
+    padding-left: 16px;
+}
+
+.color-transparent {
+    color: transparent !important;
+}
+
+.above-data-review-text {
+    margin-right: 60px;
+}
+
+.above-data-header-box-style-special {
+    opacity: 0.6;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+/*official web question: why route style useless*/
+.bp-home, .bp-rw, .bp-max, .bp-consulting, .bp-about-us, .bp-above-data {
+    min-width: 1200px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}

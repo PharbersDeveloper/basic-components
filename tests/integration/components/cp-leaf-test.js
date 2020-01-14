@@ -10,15 +10,15 @@ module('Integration | Component | cp-leaf', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{cp-leaf}}`);
+    await render(hbs`<CpLeaf />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#cp-leaf}}
+      <CpLeaf>
         template block text
-      {{/cp-leaf}}
+      </CpLeaf>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

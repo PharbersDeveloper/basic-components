@@ -10,15 +10,15 @@ module('Integration | Component | bp-sub-menu', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-sub-menu}}`);
+    await render(hbs`<BpSubMenu />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-sub-menu}}
+      <BpSubMenu>
         template block text
-      {{/bp-sub-menu}}
+      </BpSubMenu>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

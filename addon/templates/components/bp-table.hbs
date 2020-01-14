@@ -27,9 +27,8 @@
             <t.body @rows={{rows}} as |b|>
                 <b.row as |r|>
                 <r.cell as |cell column|>
-
                     {{#if column.cellComponent}}
-                    {{#component column.cellComponent value=cell}}
+                    {{#component column.cellComponent}}
                         {{cell}}
                     {{/component}}
                     {{else}}

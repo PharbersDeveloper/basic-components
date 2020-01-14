@@ -1,7 +1,5 @@
-import Component from '@ember/component';
-import layout from '../templates/components/bp-date-picker';
+import Component from '@ember/component';import layout from '../templates/components/bp-date-picker';
 import { computed } from '@ember/object';
-import {isEmpty} from "@ember/utils"
             export default Component.extend({
                 layout,
                 tagName:'div',
@@ -9,19 +7,9 @@ import {isEmpty} from "@ember/utils"
                 content: 'default',
                 classNameBindings: [],
                 attributeBindings: [],
-                date: computed("endDate",function() {
-                    let endDate = this.endDate.toString();
-                    if(isEmpty(endDate)) {
-                        return ""
-                    }
-                    let year = endDate.slice(0,4)
-                    let month = endDate.slice(4)
-                    return year + "-" + month
-                }),
-                endDate: "",
-                
+                date: "",
                 style: 'default',size: 'small',
-                range: true,type: 'date',pid: 'date-picker',min: '1990-1-1',max: '2100-12-31',
+                range: true,type: 'date',pid: 'date-picker',min: '1990-1-1',max: '2100-12-31',value: '2020-1-1',
                 currentStyle: computed("style", function() {
                     let style = this.get('style')
                     if (style) {
@@ -39,6 +27,7 @@ import {isEmpty} from "@ember/utils"
                     }
                 }),
                 confirmAction(){
+
                 },
                 didInsertElement() {
                     let that = this
@@ -48,13 +37,12 @@ import {isEmpty} from "@ember/utils"
                         type: this.get('type'),
                         min: this.get("min"),
                         max: this.get("max"),
-                        value: this.get("date"),
+                        value: this.get("value"),
                         theme: "gray",
                         btns: ['confirm'],
                         done: function(value) {
-                            
                             that.confirmAction(value)
                         }
                     });
                 },
-                actions: {}});
+                actions: {}});

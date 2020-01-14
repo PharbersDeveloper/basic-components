@@ -10,15 +10,15 @@ module('Integration | Component | bp-scatter', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-scatter}}`);
+    await render(hbs`<BpScatter />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-scatter}}
+      <BpScatter>
         template block text
-      {{/bp-scatter}}
+      </BpScatter>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

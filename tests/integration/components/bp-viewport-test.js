@@ -10,15 +10,15 @@ module('Integration | Component | bp-viewport', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-viewport}}`);
+    await render(hbs`<BpViewport />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-viewport}}
+      <BpViewport>
         template block text
-      {{/bp-viewport}}
+      </BpViewport>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

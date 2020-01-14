@@ -10,15 +10,15 @@ module('Integration | Component | bp-radar', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-radar}}`);
+    await render(hbs`<BpRadar />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-radar}}
+      <BpRadar>
         template block text
-      {{/bp-radar}}
+      </BpRadar>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

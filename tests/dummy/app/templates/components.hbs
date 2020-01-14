@@ -1,10 +1,18 @@
-<div class='bp-components'>{{bp-table  classNames=""  tid="bp-table-test" confReqAdd="http://192.168.100.59:5555" border="false"}}{{bp-date-picker  range=true type='date' pid='date-picker' min='1990-1-1' max='2100-12-31' style='default' size='small'}}{{#bp-button  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' type='primary' density='default' icon='edit'}}{{/bp-button}}{{#bp-button-group}}{{#bp-button-item  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' density='default' active=true}}{{/bp-button-item}}{{#bp-button-item  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' density='default' active=false}}{{/bp-button-item}}{{/bp-button-group}}{{bp-badge ssc="ssc" emit="emit"
+<div class='bp-components'>{{bp-table  classNames=""  tid="bp-table-test" confReqAdd="http://192.168.100.59:5555" border="false"}}{{bp-date-picker  range=true type='date' pid='date-picker' min='1990-1-1' max='2100-12-31' value='2020-1-1' style='default' size='small'}}{{#bp-button  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' type='primary' density='default' icon='edit' }}{{/bp-button}}{{#bp-button-group}}{{#bp-button-item  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' density='default' active=true}}{{/bp-button-item}}{{#bp-button-item  ssc="ssc" emit="emit" disconnect="disconnect"  disabled=false text='test text' density='default' active=false}}{{/bp-button-item}}{{/bp-button-group}}{{bp-badge ssc="ssc" emit="emit"
             disconnect="disconnect"  badgeNumber=8 primary=false reverse=false}}{{bp-input ssc="ssc" emit="emit"
             disconnect="disconnect"  disabled=false value=null placeholder='test placeHolder' size='comfy' states=''}}{{bp-label ssc="ssc" emit="emit"
-            disconnect="disconnect"  text='test label' type='body-primary'}}{{bp-link ssc="ssc" emit="emit"
-            disconnect="disconnect"  name='test link' disabled=false type='default'}}{{bp-status ssc="ssc" emit="emit"
+            disconnect="disconnect"  text='test label' type='body-primary'}}{{bp-link
+        ssc="ssc"
+        emit="emit"
+        disconnect="disconnect"
+         name='test link' disabled=false type='default'
+        classNames=""}}{{bp-status ssc="ssc" emit="emit"
             disconnect="disconnect"  statusContent='status test' type='success' subtle=true}}{{bp-tag ssc="ssc" emit="emit" disconnect="disconnect"  tagContent='tag test' type='blue' subtle=true show=true}}{{#bp-text classNames=""  tagName="span"}}
                     BPText content
                 {{/bp-text}}{{#bp-viewport ssc="ssc" emit="emit" disconnect="disconnect" classNames=""  height="120px" width="calc(100% - 48px)" clickChange=true vid="bp-viewport-test" step=200 row=true}}
                     
-                {{/bp-viewport}}</div>
+                {{/bp-viewport}}{{bp-img  src='https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/01/0F/ChMkJlbKwvKILghAAAXdSSmnlysAALGvgEMwnEABd1h654.jpg' classNames=""}}{{#bp-select choosedValue='请选择' as |s|}}{{bp-option icon='home-filled' text='option 1' onClick=(action s.onChange) choosedValue=s.val}}
+{{bp-option icon='marketplace' text='menuItem 1' onClick=(action s.onChange) choosedValue=s.val}}
+{{bp-option icon='male' text='sub menu 2' onClick=(action s.onChange) choosedValue=s.val}}
+{{/bp-select}}
+{{bp-icon ssc="ssc" emit="emit" disconnect="disconnect"  iconName='cross' color='icon-info' classNames=""}}</div>

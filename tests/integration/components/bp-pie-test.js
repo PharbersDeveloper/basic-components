@@ -10,15 +10,15 @@ module('Integration | Component | bp-pie', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-pie}}`);
+    await render(hbs`<BpPie />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-pie}}
+      <BpPie>
         template block text
-      {{/bp-pie}}
+      </BpPie>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

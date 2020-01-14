@@ -3,7 +3,7 @@ import Component from '@ember/component';import layout from '../templates/compo
         export default Component.extend({
             layout,
             tagName:'button',
-            classNames:['bp-button'],
+            classNames:['bp-button', ''],
             content: 'default',
             classNameBindings: ['currentType', 'currentDensity'],
             attributeBindings: ['disabled:disabled'],

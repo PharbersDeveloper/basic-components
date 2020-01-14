@@ -10,15 +10,15 @@ module('Integration | Component | bp-link', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`{{bp-link}}`);
+    await render(hbs`<BpLink />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
     // Template block usage:
     await render(hbs`
-      {{#bp-link}}
+      <BpLink>
         template block text
-      {{/bp-link}}
+      </BpLink>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
