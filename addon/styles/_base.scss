@@ -1947,9 +1947,13 @@ input[type="checkbox"]+label {
 }
 
 /*official web question: why route style useless*/
-.bp-home, .bp-rw, .bp-max, .bp-consulting, .bp-about-us, .bp-above-data {
+.bp-home, .bp-rw, .bp-max, .bp-consulting, .bp-about-us, .bp-above-data, .bp-industry-activity {
     min-width: 1200px;
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+.review-activity-card-desc {
+    height: 51px;
 }
