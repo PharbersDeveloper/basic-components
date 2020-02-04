@@ -1,6 +1,6 @@
 {
   "name": "basic-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "使用 BP-UI-Parse 项目通过 JSON 文件生成，并做了进一步的修改.对应 BP-UI-Parse tag 为 0.0.1",
   "keywords": [
     "ember-addon"
