@@ -18,7 +18,7 @@ export default Component.extend({
     startDate: "201801",
     endDate: "201906",
     prodName: "代文",
-
+    compName: "Sankyo",
     layout,
     ajax: service(),
     classNames: ["bp-china"],
@@ -45,20 +45,23 @@ export default Component.extend({
 
         const chartId = this.eid;
         this.set('chartId', chartId)
-        // this.get('ajax').request(this.confReqAdd + '/chartsConfig', {
-        //     method: 'GET',
-        //     data: chartId
-        // })
-        this.store.findRecord( "chart", chartId )
+        let chartConfPromise = null
+        if (isEmpty(this.store)) {
+            chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                method: 'GET',
+                data: chartId
+            })
+        } else {
+            chartConfPromise = this.store.findRecord("chart", chartId)
+        }
 
-        .then(data => {
+        chartConfPromise.then(data => {
             const config = data.styleConfigs
             const condition = data.dataConfigs
             if (!isEmpty(data.id) && !isEmpty(condition)) {
-                // ADD 处理提示框
                 let tooltipType = config.tooltip.formatter;
 
-                if(tooltipType in tooltips) {
+                if (tooltipType in tooltips) {
                     config.tooltip.formatter = tooltips[tooltipType]
                 } else {
                     delete config.tooltip.formatter
@@ -83,20 +86,23 @@ export default Component.extend({
 
         const queryConfig = cond.query
         const qa = queryConfig.address;
-        let queryChartSql = "SELECT PROVINCE_NAME, AVG(PROV_SALES_VALUE) " +
-            "AS PROV_SALES_VALUE, AVG(EI) AS EI FROM test2 WHERE MKT IN " +
-            "(SELECT MKT FROM test2 WHERE COMPANY = 'Sankyo' AND YM = " +
-            this.endDate + " AND PRODUCT_NAME = '" + this.prodName + "') AND " +
-            "COMPANY  = 'Sankyo' AND YM = " + this.endDate +
-            " GROUP BY PROVINCE_NAME.keyword"
+        // ADD this line
+        let { prodName, endDate, compName } = this;
+        // change this line
+        let queryChartSql = "SELECT PROVINCE, AVG(CURR_MKT_SALES_IN_PROV)  " +
+            "AS MKT_SALES, AVG(EI_MKT_PROV) AS EI FROM result WHERE MKT " +
+            "IN (SELECT MKT FROM result WHERE COMPANY = '" + compName + "' AND " +
+            "DATE = " + endDate + " AND PRODUCT_NAME = '" +
+            prodName + "') AND COMPANY = '" + compName + "' AND DATE = " +
+            endDate + " GROUP BY PROVINCE.keyword"
         const ec = cond.encode;
-
-        ajax.request(qa + '?tag=row2line&dimensionKeys=' + ec.dimension, {
+        ajax.request(qa + '?tag='+ec.tag+'&dimensionKeys=' + ec.dimension, {
             method: 'POST',
             data: JSON.stringify({ "sql": queryChartSql }),
             dataType: 'json'
         }).then(data => {
-            const resultData = isArray(data) ? data : [["PROVINCE_NAME", "EI", "PROV_SALES_VALUE"]]
+            // change this line
+            const resultData = isArray(data) ? data : [["PROVINCE_NAME", "EI", "MKT_SALES"]]
             let length = isArray(resultData[0]) ? resultData[0].length - 1 : 0
             let visualMapMaxArr = resultData.map(ele => typeof ele[length] === "number" ? ele[length] : 0)
             chartConfig.visualMap.max = Math.max.apply(null, visualMapMaxArr)

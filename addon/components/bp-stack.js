@@ -42,13 +42,17 @@ export default Component.extend({
 
         const chartId = this.eid;
         this.set('chartId', chartId)
-        // this.get('ajax').request(this.confReqAdd + '/chartsConfig', {
-        //     method: 'GET',
-        //     data: chartId
-        // })
-        this.store.findRecord( "chart", chartId )
+        let chartConfPromise = null
+        if (isEmpty(this.store)) {
+            chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                method: 'GET',
+                data: chartId
+            })
+        } else {
+            chartConfPromise = this.store.findRecord("chart", chartId)
+        }
 
-        .then(data => {
+        chartConfPromise.then(data => {
             const config = data.styleConfigs
             const condition = data.dataConfigs
             

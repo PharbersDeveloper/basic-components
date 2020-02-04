@@ -20,7 +20,7 @@ export default Component.extend({
     startDate: "201801",
     endDate: "201901",
     prodName: "代文",
-
+    compName: "Sankyo",
     layout,
     ajax: service(),
     classNames: ["bp-scatter"],
@@ -32,32 +32,33 @@ export default Component.extend({
             renderer: 'canvas' // canvas of svg
         });
     },
-    didReceiveAttrs() {
-        this._super(...arguments);
-    },
     didUpdateAttrs() {
         this._super(...arguments);
         const { dataConfig, dataCondition } = this;
         if (!isEmpty(dataCondition)) {
             this.generateChartOption(dataConfig, dataCondition);
         }
-        // this.generateChartOption(dataConfig, dataCondition);
     },
     didInsertElement() {
         this._super(...arguments);
 
         const chartId = this.eid;
         this.set('chartId', chartId)
-        // this.get('ajax').request(this.confReqAdd + '/chartsConfig', {
-        //     method: 'GET',
-        //     data: chartId
-        // })
-        this.store.findRecord( "chart", chartId )
-        .then(data => {
+        let chartConfPromise = null
+        if (isEmpty(this.store)) {
+            chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                method: 'GET',
+                data: chartId
+            })
+        } else {
+            chartConfPromise = this.store.findRecord("chart", chartId)
+        }
+
+        chartConfPromise.then(data => {
             const config = data.styleConfigs
             const condition = data.dataConfigs
             if (!isEmpty(data.id) && !isEmpty(condition)) {
-                // ADD 处理提示框
+                // 处理提示框
                 let tooltipType = config.tooltip.formatter;
 
                 if (tooltipType in tooltips) {
@@ -83,18 +84,18 @@ export default Component.extend({
     generateChartOption(chartConfig, cond) {
         const queryConfig = cond.query
         const qa = queryConfig.address;
-        const queryChartSql = "SELECT CITY_NAME, AVG(CITY_SALES_VALUE) AS " +
-            "CITY_SALES_VALUE, AVG(CITY_MOM) AS CITY_MOM, AVG(MKT_MOM) AS " +
-            "MKT_MOM FROM test2 WHERE MKT IN (SELECT MKT FROM test2 WHERE " +
-            "COMPANY = 'Sankyo' AND YM = " + this.endDate + " AND PRODUCT_NAME " +
-            "= '" + this.prodName + "') AND COMPANY = 'Sankyo' AND YM = " +
-            this.endDate + " AND PROVINCE_NAME = '" + this.currentProv +
-            "' GROUP BY CITY_NAME.keyword"
+ 
+        const { endDate, prodName, currentProv, compName, ajax } = this
+        let queryChartSql = "SELECT CITY_NAME, AVG(CURR_MKT_SALES_IN_CITY) " +
+            "AS CITY_SALES, AVG(MOM_RATE_ON_MKT_CITY) AS CITY_MOM, "+
+            "AVG(MOM_RATE_ON_MKT_PROV) AS PROV_MOM FROM result "+
+            "WHERE MKT IN (SELECT MKT FROM result WHERE COMPANY = '"+compName +
+            "' AND DATE = "+endDate +" AND PRODUCT_NAME = '"+prodName +
+            "') AND COMPANY = '"+compName+"' AND  DATE = "+
+            endDate +" AND PROVINCE = '"+currentProv+"' GROUP BY CITY.keyword";
 
-        const ajax = this.ajax;
         const ec = cond.encode;
-
-        ajax.request(qa + '?tag=row2line&dimensionKeys=' + ec.dimension, {
+        ajax.request(qa + '?tag='+ec.tag +'&dimensionKeys=' + ec.dimension, {
             method: 'POST',
             data: JSON.stringify({ "sql": queryChartSql }),
             dataType: 'json'
@@ -117,7 +118,7 @@ export default Component.extend({
         })
     },
     updateChartData(chartConfig, chartData) {
-        // 示例数据
+        /**  示例数据
         let mock = [
             ["省份", "marketGrowth", "prodGrowth", "sales"],
             ["山东", 28.604, 7.7, 1111706869],
@@ -125,12 +126,14 @@ export default Component.extend({
             ["北京", -15.16, -68, 1154605773],
             ["台湾", 13.670, 74.7, 10582082],
         ]
-        //修改数据顺序需要修改
-        // - visualMap.dimension
-        // - series.encode.x
-        // - series.encode.y
-        // - optionWithData 函数体内的 circleRangeArr
-        // this.reGenerateChart(chartConfig, mock);
+        */
+        /** 修改数据顺序需要修改
+            - visualMap.dimension
+            - series.encode.x
+            - series.encode.y
+            - optionWithData 函数体内的 circleRangeArr
+            this.reGenerateChart(chartConfig, mock);
+        */
         this.reGenerateChart(chartConfig, chartData);
 
         this.dataReady(chartData, chartConfig);
