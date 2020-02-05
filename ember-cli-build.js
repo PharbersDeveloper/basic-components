@@ -4,6 +4,11 @@
             module.exports = function(defaults) {
             let app = new EmberAddon(defaults, {
                 // Add options here
+                svgJar: {
+                    strategy: 'symbol',
+        
+                    sourceDirs: ['./public']
+                }
             });
             // layui-laydate
                 app.import("vendor/laydate/theme/default/font/iconfont.eot", {

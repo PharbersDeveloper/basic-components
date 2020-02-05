@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>btn_decision_hospital_checked-disabled@2x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="btn_decision_hospital_checked-disabled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Container" x="-10" y="-10" width="40" height="40"></rect>
+        <rect id="Background" fill="#F4F5F7" x="-3.55271368e-15" y="-3.55271368e-15" width="20" height="20" rx="4"></rect>
+        <g id="icon/checkbox" transform="translate(3.000000, 5.000000)" fill="#B3BAC5">
+            <path d="M3.1785113,3.8214887 C2.52763748,3.17061488 1.47236252,3.17061488 0.821488698,3.8214887 C0.170614878,4.47236252 0.170614878,5.52763748 0.821488698,6.1785113 L4.15482203,9.51184464 C4.80569585,10.1627185 5.86097082,10.1627185 6.51184464,9.51184464 L13.1785113,2.84517797 C13.8293851,2.19430415 13.8293851,1.13902918 13.1785113,0.488155365 C12.5276375,-0.162718455 11.4723625,-0.162718455 10.8214887,0.488155365 L5.33333333,5.97631073 L3.1785113,3.8214887 Z" id="Stroke"></path>
+        </g>
+    </g>
+</svg>
