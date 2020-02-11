@@ -38,8 +38,7 @@ import {isEmpty} from "@ember/utils"
                         return 'date-picker-width-default'
                     }
                 }),
-                confirmAction(){
-                },
+                confirmAction(){},
                 didInsertElement() {
                     let that = this
                     laydate.render({

@@ -1,4 +1,5 @@
-import Component from '@ember/component';import layout from '../templates/components/bp-input';
+import Component from '@ember/component';
+import layout from '../templates/components/bp-input';
         import { computed } from '@ember/object';
         export default Component.extend({
             layout,
@@ -6,9 +7,10 @@ import Component from '@ember/component';import layout from '../templates/compo
             classNames:['bp-input'],
             content: 'default',
             classNameBindings: ['currentStates', 'currentSize'],
-            attributeBindings: ['disabled:disabled', 'placeholder', 'value'],
+            attributeBindings: ['disabled:disabled', 'type', 'placeholder', 'value'],
             disabled: false,value: null,placeholder: 'test placeHolder',size: 'comfy',
             states: '',
+            type: "text",
             currentStates: computed('states', function () {
                 let states = this.get('states')
                 if (states) {
@@ -103,4 +105,4 @@ import Component from '@ember/component';import layout from '../templates/compo
             },onChange(target,data) {
                 window.console.log("BP-UI-Parse Change event => " + data)
             },
-                }},});
+                }},});

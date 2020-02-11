@@ -33,7 +33,7 @@ button {
 
 /* button 通用样式 */
 button.button-primary {
-    background: $color-primary-b400;
+    background: $color-primary-b400 !important;
     color: $color-neutrals-n000;
 }
 
@@ -155,6 +155,10 @@ button.button-subtle {
 .button-density-compact {
     height: $size-density-compact;
     line-height: $size-3x;
+}
+
+.bp-button.btn-block {
+    width: 100%;
 }
 
 /*button group*/

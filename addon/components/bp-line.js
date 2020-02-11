@@ -103,7 +103,6 @@ export default Component.extend({
         echartInit.hideLoading();
     },
     calculateLinesNumber(panelConfig, chartData) {
-        // console.log(this.dataConfig)
         let linesNumber = chartData.length - 1,
             dc = this.dataConfig,
             lineConfig = isArray(dc.series) ? dc.series[0] : dc.series,
