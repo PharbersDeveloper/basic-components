@@ -1,4 +1,5 @@
-import Component from '@ember/component';import layout from '../templates/components/bp-input';
+import Component from '@ember/component';
+import layout from '../templates/components/bp-input';
         import { computed } from '@ember/object';
         export default Component.extend({
             layout,
@@ -6,7 +7,7 @@ import Component from '@ember/component';import layout from '../templates/compo
             classNames:['bp-input'],
             content: 'default',
             classNameBindings: ['currentStates', 'currentSize'],
-            attributeBindings: ['disabled:disabled', 'placeholder', 'value'],
+            attributeBindings: ['disabled:disabled', 'placeholder', 'value', 'onInput'],
             disabled: false,value: null,placeholder: 'test placeHolder',size: 'comfy',
             states: '',
             currentStates: computed('states', function () {
@@ -32,19 +33,16 @@ import Component from '@ember/component';import layout from '../templates/compo
 
                 action.call(this, this, "blur", "")
             },
-            input() {
-                let action = this.actions.emit;
+            // input() {
+            //     let action = this.actions.emit;
 
-                action.call(this, this, "input", "")
+            //     action.call(this, this, "input", "")
+            // },
+            input(event) {
+                this.set('value', event.target.value)
             },
-            change() {
-                let action = this.actions.emit;
-
-                action.call(this, this, "change", "")
-            },
-            
-                
         actions: {
+            
             emit(source, signal, data) {
                 this.sendAction("emit", source, signal, data)
             },
@@ -103,4 +101,4 @@ import Component from '@ember/component';import layout from '../templates/compo
             },onChange(target,data) {
                 window.console.log("BP-UI-Parse Change event => " + data)
             },
-                }},});
+                }},});
