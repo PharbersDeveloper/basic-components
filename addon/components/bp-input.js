@@ -7,7 +7,7 @@ import layout from '../templates/components/bp-input';
             classNames:['bp-input'],
             content: 'default',
             classNameBindings: ['currentStates', 'currentSize'],
-            attributeBindings: ['disabled:disabled', 'placeholder', 'value', 'onInput'],
+            attributeBindings: ['disabled:disabled', 'placeholder', 'value', 'onInput', 'type'],
             disabled: false,value: null,placeholder: 'test placeHolder',size: 'comfy',
             states: '',
             currentStates: computed('states', function () {
