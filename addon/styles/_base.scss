@@ -1346,6 +1346,11 @@ input[type="checkbox"]+label {
     height: 100%;
 }
 
+.bp-table-container {
+    width: 100%;
+    height: 100%;
+}
+
 .bp-table table th {
     background: $color-neutrals-n000;
     border-bottom: $border-medium solid $color-neutrals-n030;
