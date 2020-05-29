@@ -1,4 +1,5 @@
-import Component from '@ember/component';import layout from '../templates/components/bp-button-item';
+import Component from '@ember/component';
+import layout from '../templates/components/bp-button-item';
         import { computed } from '@ember/object';
         export default Component.extend({
             layout,
@@ -7,6 +8,8 @@ import Component from '@ember/component';import layout from '../templates/compo
             content: 'default',
             classNameBindings: ['currentDensity',  'active:active'],
             attributeBindings: ['disabled:disabled'],
+            iconClass: "",
+            iconActiveClass: "",
             disabled: false,text: 'test text',
             density: 'default',active: true,
             currentDensity: computed('density', function () {
@@ -68,4 +71,4 @@ import Component from '@ember/component';import layout from '../templates/compo
             },onDblclick(target,data) {
                 window.console.log("BP-UI-Parse Dblclick event => " + data)
             },
-                }},});
+                }},});

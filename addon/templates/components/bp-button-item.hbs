@@ -1,7 +1,11 @@
 
-        {{cp-leaf ssc="ssc" disconnect="disconnect"}}
-        {{#if icon}}
-                {{svg-jar icon width='24px' height='24px' class='icon'}}
-        {{/if}}
-        {{text}}
-        {{yield}}
+{{cp-leaf ssc="ssc" disconnect="disconnect"}}
+{{#if icon}}
+    {{#if active}}
+        {{svg-jar icon width='24px' height='24px' class=iconActiveClass}}
+    {{else}}
+        {{svg-jar icon width='24px' height='24px' class=iconClass}}
+    {{/if}}        
+{{/if}}
+{{text}}
+{{yield}}
