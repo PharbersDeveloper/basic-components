@@ -1,0 +1,10 @@
+{{#if (has-block)}}
+    {{svg-jar icon width='24px' height='24px' class='icon'}}
+    <div style="display: flex;flex-direction: column;">
+        <span>{{text}}</span>
+        <div>{{yield}}</div>
+    </div>
+    
+{{else}}
+    {{svg-jar icon width='24px' height='24px' class='icon'}}<span>{{text}}</span>
+{{/if}}
