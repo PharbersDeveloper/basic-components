@@ -9,28 +9,41 @@ import {computed} from '@ember/object';
                 layout,
                 ajax: service(),
                 classNames:["bp-table"],
-                content: 'default',
                 classNameBindings: ['border:border-table',"border",],
                 attributeBindings: [''],
                 tid: "bp-table-test",
 confReqAdd: "http://192.168.100.59:5555",
-undefined: "undefined",
+border: "false",
 
+                didUpdateAttrs() {
+                    this._super(...arguments);
+                    this.tableData.then(data => {
+                        this.setProperties({
+                            columns: data.columns,
+                            rows: data.rows
+                        })
+                    })
+                },
                 didInsertElement() {
                     this._super(...arguments);
-                    this.getData()
-
+                    // this.getData()
+                    this.tableData.then(data => {
+                        this.setProperties({
+                            columns: data.columns,
+                            rows: data.rows
+                        })
+                    })
                     const that = this
                     const thisComp = document.getElementById(this.get('tid'))
                     const table = thisComp.getElementsByClassName('ember-table')[0]
 
-                    table.onscroll = function(){
+                    table.onscroll = function () {
                         const ths = table.getElementsByTagName('th')
                         const length = ths.length
                         const leftWidth = ths[0].offsetWidth
                         const leftHeight = table.offsetHeight
 
-                        const rightWidth = ths[length-2].offsetWidth
+                        const rightWidth = ths[length - 2].offsetWidth
 
                         that.set('leftWidth', leftWidth)
                         that.set('leftHeight', leftHeight)
@@ -41,7 +54,7 @@ undefined: "undefined",
                             that.set('tableLeftFixed', true)
                         }
 
-                        if ((ths[length-1].offsetLeft - ths[length-2].offsetLeft) < rightWidth) {
+                        if ((ths[length - 1].offsetLeft - ths[length - 2].offsetLeft) < rightWidth) {
                             that.set('tableRightFixed', true)
                         } else {
                             that.set('tableRightFixed', false)
@@ -70,7 +83,6 @@ undefined: "undefined",
 
                         this.set("columns", arrC)
 
-                        window.console.log(data)
                         return ajax.request(queryAddress + '?tag=array', {
                             method: 'POST',
                             data: JSON.stringify({"sql": query.dimensionSql}),
@@ -107,11 +119,9 @@ undefined: "undefined",
                                 })
                                 arrR.push(obj)
                             })
-                            window.console.log(arrR)
                             this.set('rows', arrR)
                         })
                     })
-                    window.console.log('new data')
                 },
                 getData() {
                     if (!this.get('rows') && !this.get('columns')) {
@@ -137,7 +147,7 @@ undefined: "undefined",
                             it.isDesending = false
 
                             if (sorts.length >= 1) {
-                                if(it.valuePath === sorts[0].valuePath) {
+                                if (it.valuePath === sorts[0].valuePath) {
                                     it.isAscending = sorts[0].isAscending
                                     it.isDesending = !sorts[0].isAscending
                                 }

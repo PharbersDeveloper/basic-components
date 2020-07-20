@@ -1,0 +1,13 @@
+
+        <div class="input-list-container {{inputListType}}">
+        <div class="bp-input select-input" {{action "toggleShow"}} >{{value}}</div>
+        {{#if show}}
+            <div class="input-list">
+                {{#each array as |item index|}}
+                    <span onclick={{action "chooseItem" index bubbles=false}} class="cursor-pointer">{{item}}</span>
+                {{/each}}
+            </div>
+        {{/if}}
+        </div>
+
+        

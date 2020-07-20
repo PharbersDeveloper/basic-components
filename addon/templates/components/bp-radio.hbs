@@ -1,0 +1,11 @@
+
+        {{#if disabled}}
+                <input type="radio" id={{rid}} name={{name}} value={{value}} disabled>
+                <label for={{rid}} style="color: #B3BAC5;">{{value}}</label>
+        {{else if isChoosed}}
+            <input type="radio" id={{rid}} name={{name}} value={{value}} checked>
+            <label for={{rid}}>{{value}}</label>
+        {{else}}
+            <input type="radio" id={{rid}} name={{name}} value={{value}}>
+            <label for={{rid}}>{{value}}</label>
+        {{/if}}

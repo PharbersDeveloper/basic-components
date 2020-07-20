@@ -1,15 +1,30 @@
 import Component from '@ember/component';import layout from '../templates/components/bp-date-picker';
 import { computed } from '@ember/object';
+            import {isEmpty} from "@ember/utils"
+
             export default Component.extend({
                 layout,
-                tagName:'div',
                 classNames:['positon-relative', 'width-fit-content'],
-                content: 'default',
                 classNameBindings: [],
                 attributeBindings: [],
-                date: "",
-                style: 'default',size: 'small',
-                range: true,type: 'date',pid: 'date-picker',min: '1990-1-1',max: '2100-12-31',value: '2020-1-1',
+                date: computed("endDate",function() {
+                    let endDate = this.endDate.toString();
+                    if(isEmpty(endDate)) {
+                        return ""
+                    }
+                    let year = endDate.slice(0,4)
+                    let month = endDate.slice(4)
+                    return year + "-" + month
+                }),
+                endDate: "",
+                range: "true",
+type: "date",
+pid: "date-picker",
+min: "1990-1-1",
+max: "2100-12-31",
+style: "default",
+size: "small",
+
                 currentStyle: computed("style", function() {
                     let style = this.get('style')
                     if (style) {
@@ -26,9 +41,7 @@ import { computed } from '@ember/object';
                         return 'date-picker-width-default'
                     }
                 }),
-                confirmAction(){
-
-                },
+                confirmAction(){},
                 didInsertElement() {
                     let that = this
                     laydate.render({
@@ -37,7 +50,7 @@ import { computed } from '@ember/object';
                         type: this.get('type'),
                         min: this.get("min"),
                         max: this.get("max"),
-                        value: this.get("value"),
+                        value: this.get("date"),
                         theme: "gray",
                         btns: ['confirm'],
                         done: function(value) {

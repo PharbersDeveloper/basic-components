@@ -1,0 +1,40 @@
+#toast-container.toast-top-center {
+	top: 88px;
+
+	.toast {
+		min-width: 320px;
+		width: -webkit-fit-content;
+		width: -moz-fit-content;
+		width: fit-content;
+		height: 56px;
+		border-radius: 4px;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		background-size: 24px 24px;
+		padding: 16px 16px 16px 56px;
+        opacity: 1;
+
+		.toast-title {
+			font-size: 14px;
+			color: #FFFFFF;
+			height: 24px;
+			line-height: 24px;
+		}
+
+		&:hover {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+
+		&.toast-success {
+			background-image: url("/images/icon_check-circle copy@2x.png") !important;
+            background-color: #39BF5F !important;
+            background-repeat: no-repeat !important;
+		}
+
+		&.toast-error {
+			background-image: url("/images/icon_cross-circle copy@2x.png") !important;
+			background-color: #DE350B !important;
+		}
+	}
+}

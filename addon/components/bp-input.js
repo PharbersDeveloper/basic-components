@@ -1,5 +1,4 @@
-import Component from '@ember/component';
-import layout from '../templates/components/bp-input';
+import Component from '@ember/component';import layout from '../templates/components/bp-input';
         import { computed } from '@ember/object';
         export default Component.extend({
             layout,
@@ -7,8 +6,9 @@ import layout from '../templates/components/bp-input';
             classNames:['bp-input'],
             content: 'default',
             classNameBindings: ['currentStates', 'currentSize'],
-            attributeBindings: ['disabled:disabled', 'placeholder', 'value', 'onInput', 'type'],
-            disabled: false,value: null,placeholder: 'test placeHolder',size: 'comfy',
+            attributeBindings: ['disabled:disabled', 'type', 'placeholder', 'value', 'maxlength'],
+            type: "text",
+            disabled: false,value: null,placeholder: 'test placeHolder',size: 'comfy',maxlength: 50,
             states: '',
             currentStates: computed('states', function () {
                 let states = this.get('states')
@@ -23,6 +23,9 @@ import layout from '../templates/components/bp-input';
 
                 return "input-" + size
             }),
+            input(event) {
+                this.set("value", event.target.value)
+            },
             focus() {
                 let action = this.actions.emit;
 
@@ -33,16 +36,14 @@ import layout from '../templates/components/bp-input';
 
                 action.call(this, this, "blur", "")
             },
-            // input() {
-            //     let action = this.actions.emit;
+            change() {
+                let action = this.actions.emit;
 
-            //     action.call(this, this, "input", "")
-            // },
-            input(event) {
-                this.set('value', event.target.value)
+                action.call(this, this, "change", "")
             },
-        actions: {
             
+                
+        actions: {
             emit(source, signal, data) {
                 this.sendAction("emit", source, signal, data)
             },
@@ -72,14 +73,6 @@ import layout from '../templates/components/bp-input';
                "target": this,
                "slot": this.get("actions.slots.onBlur")
            })
-            mss.pushObject({ "source": this, "signal": "input" })
-            mts.pushObject({ "target": this, "slot": this.get("actions.slots.onInput") })
-            mcs.pushObject({
-               "source": this,
-               "signal": "input",
-               "target": this,
-               "slot": this.get("actions.slots.onInput")
-           })
             mss.pushObject({ "source": this, "signal": "change" })
             mts.pushObject({ "target": this, "slot": this.get("actions.slots.onChange") })
             mcs.pushObject({
@@ -96,9 +89,7 @@ import layout from '../templates/components/bp-input';
                 window.console.log("BP-UI-Parse Focus event => " + data)
             },onBlur(target,data) {
                 window.console.log("BP-UI-Parse Blur event => " + data)
-            },onInput(target,data) {
-                window.console.log("BP-UI-Parse Input event => " + data)
             },onChange(target,data) {
                 window.console.log("BP-UI-Parse Change event => " + data)
             },
-                }},});
+                }},});

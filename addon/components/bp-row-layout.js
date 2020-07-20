@@ -1,5 +1,4 @@
-import Component from '@ember/component';
-import layout from '../templates/components/bp-row-layout';
+import Component from '@ember/component';import layout from '../templates/components/bp-row-layout';
 export default Component.extend({
                 layout,
                 classNames:["bp-row-layout"],
@@ -8,4 +7,4 @@ mainAxis: "main-flex-start",
 crossAxis: "cross-stretch",
 alignContent: "wrap-flex-start",
 
-                classNameBindings: ["wrap","mainAxis","crossAxis","alignContent",],});
+                classNameBindings: ["wrap","mainAxis","crossAxis","alignContent",],});

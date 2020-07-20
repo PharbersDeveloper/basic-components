@@ -1,14 +1,16 @@
 {{cp-leaf ssc="ssc" disconnect="disconnect"}}
         {{#if clickChange}}
+            {{#if sidebarIcon}}
+            <div onclick={{action "stepAction" "left"}} class={{sidebarIconStyleLeft}}>{{svg-jar sidebarIcon width='24px' height='24px' class='icon-no-margin'}}</div>
+            {{else}}
             <div onclick={{action "stepAction" "left"}} class='viewport-click-left'>{{svg-jar 'pre-year' width='24px' height='24px' class='icon-no-margin'}}</div>
+            {{/if}}
         {{/if}}
-        <div class="viewport-hidden-wrapper">
-            <div class="viewport-auto-wrapper">
-                <div class="viewport-nowarp">
-                    {{yield}}
-                </div>
-            </div>
-        </div>
+        {{yield}}
         {{#if clickChange}}
+            {{#if sidebarIcon}}
+            <div onclick={{action "stepAction" "right"}} class={{sidebarIconStyleRight}}>{{svg-jar sidebarIcon width='24px' height='24px' class=icon-no-margin}}</div>
+            {{else}}
             <div onclick={{action "stepAction" "right"}} class='viewport-click-right'>{{svg-jar 'next-year' width='24px' height='24px' class='icon-no-margin'}}</div>
+            {{/if}}
         {{/if}}

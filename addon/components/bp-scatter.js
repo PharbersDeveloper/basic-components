@@ -6,8 +6,12 @@ import { isEmpty, typeOf } from '@ember/utils';
         import { inject as service } from '@ember/service';
         import { all } from 'rsvp';
         import EmberObject from '@ember/object';
+        import { tooltips,otherConfCb } from "../utils/tooltips";
+        import { copy } from '@ember/object/internals';
+    
             export default Component.extend({
             eid: "scatter-demo-first001",
+store: this.store,
 confReqAdd: "http://192.168.100.25:5555",
 currentProv: "全国",
 currentCity: "",
@@ -27,30 +31,45 @@ prodName: "Viread",
                 renderer: 'canvas' // canvas of svg
             });
         },
-        didReceiveAttrs() {
-            this._super(...arguments);
-        },
         didUpdateAttrs() {
             this._super(...arguments);
-            const {dataConfig,dataCondition} = this;
-
-            this.generateChartOption(dataConfig, dataCondition);
+            const { dataConfig, dataCondition } = this;
+            if (!isEmpty(dataCondition)) {
+                this.generateChartOption(dataConfig, dataCondition);
+            }
         },
         didInsertElement() {
             this._super(...arguments);
 
             const chartId = this.eid;
             this.set('chartId', chartId)
-            this.get('ajax').request(this.confReqAdd+'/chartsConfig', {
-                method: 'GET',
-                data: chartId
-            }).then(data => {
-                if (!isEmpty(data.id) && !isEmpty(data.condition)) {
+            let chartConfPromise = null
+            if (isEmpty(this.store)) {
+                chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                    method: 'GET',
+                    data: chartId
+                })
+            } else {
+                chartConfPromise = this.store.findRecord("chart", chartId)
+            }
+
+            chartConfPromise.then(data => {
+                const config = data.styleConfigs
+                const condition = data.dataConfigs
+                if (!isEmpty(data.id) && !isEmpty(condition)) {
+                    // 处理提示框
+                    let tooltipType = config.tooltip.formatter;
+
+                    if (tooltipType in tooltips) {
+                        config.tooltip.formatter = tooltips[tooltipType]
+                    } else {
+                        delete config.tooltip.formatter
+                    }
                     this.setProperties({
-                        dataConfig: data.config,
-                        dataCondition: data.condition
-                      });
-                    this.generateChartOption(data.config, data.condition);
+                        dataConfig: config,
+                        dataCondition: condition
+                    });
+                    this.generateChartOption(config, condition);
                 }
             })
         },
@@ -64,8 +83,16 @@ prodName: "Viread",
         generateChartOption(chartConfig, cond) {
             const queryConfig = cond.query
             const qa = queryConfig.address;
-            const queryChartSql = queryConfig.chartSql;
-            const ajax = this.ajax;
+            const { endDate, prodName, currentProv, compName, ajax } = this;
+
+            const queryChartSql = "SELECT CITY_NAME, AVG(CURR_MKT_SALES_IN_CITY) " +
+            "AS CITY_SALES, AVG(MOM_RATE_ON_MKT_CITY) AS CITY_MOM, "+
+            "AVG(MOM_RATE_ON_MKT_PROV) AS PROV_MOM FROM result "+
+            "WHERE MKT IN (SELECT MKT FROM result WHERE COMPANY = '"+compName +
+            "' AND DATE = "+endDate +" AND PRODUCT_NAME = '"+prodName +
+            "') AND COMPANY = '"+compName+"' AND  DATE = "+
+            endDate +" AND PROVINCE = '"+currentProv+"' GROUP BY CITY.keyword";
+
             const ec = cond.encode;
 
             ajax.request(qa + '?tag=row2line&dimensionKeys=' + ec.dimension, {
@@ -73,24 +100,40 @@ prodName: "Viread",
                 data: JSON.stringify({ "sql": queryChartSql }),
                 dataType: 'json'
             }).then(data => {
-                this.updateChartData(chartConfig, data);
+                let preData = [
+                    ["CITY_NAME", "MKT_MOM", "CITY_MOM", "CITY_SALES_VALUE"]];
+                // TODO 数据为空时的配置
+                let noDataConfig = {
+                    text: '暂无数据',
+                    effect: 'bubble',
+                    effectOption: {
+                        effect: {
+                            n: 0 //气泡个数为0
+                        }
+                    }
+                }
+                let result = isEmpty(data) ? preData : data
+                let config = isEmpty(data) ? noDataConfig : chartConfig
+                this.updateChartData(chartConfig, result);
             })
         },
 updateChartData(chartConfig, chartData) {
-            // 示例数据
+            /**  示例数据
             let mock = [
-                ["省份","marketGrowth","prodGrowth","sales"],
-                ["山东",28.604,7.7,1111706869],
-                ["浙江",31.163,77.4,27662440],
-                ["北京",-15.16,-68,1154605773],
-                ["台湾",13.670,74.7,10582082],
+                ["省份", "marketGrowth", "prodGrowth", "sales"],
+                ["山东", 28.604, 7.7, 1111706869],
+                ["浙江", 31.163, 77.4, 27662440],
+                ["北京", -15.16, -68, 1154605773],
+                ["台湾", 13.670, 74.7, 10582082],
             ]
-            //修改数据顺序需要修改
-            // - visualMap.dimension
-            // - series.encode.x
-            // - series.encode.y
-            // - optionWithData 函数体内的 circleRangeArr
-            // this.reGenerateChart(chartConfig, mock);
+            */
+            /** 修改数据顺序需要修改
+                - visualMap.dimension
+                - series.encode.x
+                - series.encode.y
+                - optionWithData 函数体内的 circleRangeArr
+                this.reGenerateChart(chartConfig, mock);
+            */
             this.reGenerateChart(chartConfig, chartData);
 
             this.dataReady(chartData, chartConfig);

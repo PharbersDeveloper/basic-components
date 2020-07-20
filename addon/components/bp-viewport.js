@@ -16,6 +16,16 @@ row: true,
                 style: computed('width', 'height', function() {
                     return 'height:' + this.get('height') + ';width:' + this.get('width') + ';'
                 }),
+                sidebarIconStyleRight: computed('sidebarIconStyle', function(){
+                    if (this.get('sidebarIconStyle')) {
+                        return this.get('sidebarIconStyle') + '-right'
+                    }
+                }),
+                sidebarIconStyleLeft: computed('sidebarIconStyle', function(){
+                    if (this.get('sidebarIconStyle')) {
+                        return this.get('sidebarIconStyle') + '-left'
+                    }
+                }),
                 click() {
                 let action = this.actions.emit;
 
@@ -54,14 +64,24 @@ row: true,
             },
                 },
                     stepAction(dire) {
-                        let curDom = document.getElementById(this.get('vid'))
-                        let curSroll = curDom.getElementsByClassName("viewport-auto-wrapper")[0]
-                        let curDistance = curSroll.scrollLeft
-                        let step = this.get('step')
-                        if(dire ==="right") {
-                            curSroll.scrollLeft = step + curDistance
-                        } else if (dire === "left") {
-                            curSroll.scrollLeft = curDistance - step
+                        let curVireport = document.getElementById(this.get('vid'))
+                        let curDom = curVireport.getElementsByClassName("transform-list")[0]
+                        let step = Number(this.get('step')),
+                        curStep = 0,
+                        dis = 0
+
+                        if ( curDom.style.transform ) {
+                            let curStepString = curDom.style.transform ? curDom.style.transform : "",
+                                match = curStepString.match(/translateX((.*)px)/)
+
+                            curStep = Number(match && match[1])
                         }
+
+                        if(dire === "right") {
+                            dis = curStep + step
+                        } else if (dire === "left") {
+                            dis = curStep - step
+                        }
+                        curDom.style.transform = "translateX(" + dis + "px)"
                     }
                 }});

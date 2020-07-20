@@ -4,10 +4,12 @@ import Component from '@ember/component';import layout from '../templates/compo
             layout,
             tagName:"span",
             classNames:["bp-tag", ""],
-            content: 'default',
             attributeBindings: [''],
-            tagContent: 'tag test',
-            type: 'blue',subtle: true,show: true,
+            tagContent: "tag test",
+type: "blue",
+subtle: "true",
+show: "true",
+
             
             classNameBindings: ["currentStyle", "currentType", "show::display-none"],
             currentStyle: computed('subtle', function () {

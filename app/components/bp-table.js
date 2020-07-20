@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-table';
+export { default } from 'basic-components-v4/components/bp-table';

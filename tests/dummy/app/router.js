@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('navigation');
   this.route('charts');
   this.route('layout');
+  this.route('simple');
 });
 
 export default Router;

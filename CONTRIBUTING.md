@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd basic-components`
+* `cd basic-components-v4`
 * `npm install`
 
 ## Linting

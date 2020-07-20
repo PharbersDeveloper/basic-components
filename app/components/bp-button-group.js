@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-button-group';
+export { default } from 'basic-components-v4/components/bp-button-group';

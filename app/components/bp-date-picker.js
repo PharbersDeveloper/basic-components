@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-date-picker';
+export { default } from 'basic-components-v4/components/bp-date-picker';

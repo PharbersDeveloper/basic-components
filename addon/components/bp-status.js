@@ -4,10 +4,8 @@ import Component from '@ember/component';import layout from '../templates/compo
             layout,
             tagName:'span',
             classNames:['bp-status'],
-            content: 'default',
             classNameBindings: ['currentType', 'currentStyle'],
             attributeBindings: [''],
-            statusContent: null,
             statusContent: 'status test',
             type: 'success',subtle: true,
             currentStyle: computed('subtle', function () {

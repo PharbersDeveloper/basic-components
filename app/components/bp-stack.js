@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-stack';
+export { default } from 'basic-components-v4/components/bp-stack';

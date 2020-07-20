@@ -6,8 +6,12 @@ import { isEmpty, typeOf } from '@ember/utils';
         import { inject as service } from '@ember/service';
         import { all } from 'rsvp';
         import EmberObject from '@ember/object';
+        import { tooltips,otherConfCb } from "../utils/tooltips";
+        import { copy } from '@ember/object/internals';
+    
             export default Component.extend({
             eid: "line-demo-first001",
+store: this.store,
 confReqAdd: "http://192.168.100.25:5555",
 provName: "全国",
 cityName: "",
@@ -26,30 +30,50 @@ prodName: "Viread",
                 renderer: 'canvas' // canvas of svg
             });
         },
-        didReceiveAttrs() {
-            this._super(...arguments);
-        },
         didUpdateAttrs() {
             this._super(...arguments);
-            const {dataConfig,dataCondition} = this;
+            const { dataConfig, dataCondition } = this;
 
-            this.generateChartOption(dataConfig, dataCondition);
+            if (!isEmpty(dataCondition)) {
+                const newConfig = copy(dataConfig,true)
+
+                this.generateChartOption(newConfig, dataCondition);
+            }
         },
         didInsertElement() {
             this._super(...arguments);
 
             const chartId = this.eid;
             this.set('chartId', chartId)
-            this.get('ajax').request(this.confReqAdd+'/chartsConfig', {
-                method: 'GET',
-                data: chartId
-            }).then(data => {
-                if (!isEmpty(data.id) && !isEmpty(data.condition)) {
+            let chartConfPromise = null
+            if (isEmpty(this.store)) {
+                chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                    method: 'GET',
+                    data: chartId
+                })
+            } else {
+                chartConfPromise = this.store.findRecord("chart", chartId)
+            }
+
+            chartConfPromise.then(data => {
+                const config = data.styleConfigs
+                const condition = data.dataConfigs
+
+                if (!isEmpty(data.id) && !isEmpty(condition)) {
+                    // 处理提示框
+                    let tooltipType = config.tooltip.formatter;
+                    if (tooltipType in tooltips) {
+                        config.tooltip.formatter = tooltips[tooltipType]
+                    } else {
+                        delete config.tooltip.formatter
+                    }
                     this.setProperties({
-                        dataConfig: data.config,
-                        dataCondition: data.condition
-                      });
-                    this.generateChartOption(data.config, data.condition);
+                        dataConfig: config,
+                        dataCondition: condition
+                    });
+                    const newConfig = copy(config, true)
+
+                    this.generateChartOption(newConfig, condition);
                 }
             })
         },
@@ -78,14 +102,37 @@ updateChartData(chartConfig, chartData) {
             echartInit.hideLoading();
         },calculateLinesNumber(panelConfig, chartData) {
             let linesNumber = chartData.length - 1,
-                lineConfig = isArray(panelConfig.series) ? panelConfig.series[0] : panelConfig.series,
-                series = [...Array(linesNumber)].map(() => {
-                    return lineConfig;
-                });
+            dc = this.dataConfig,
+            lineConfig = isArray(dc.series) ? dc.series[0] : dc.series,
+            lineColor = lineConfig.itemStyle ? lineConfig.itemStyle.color : "",
+            series = [];
 
-            panelConfig.series = series;
-            return panelConfig;
-        },reGenerateChart(option, chartData) {
+        // 线条颜色
+        if (lineColor in otherConfCb) {
+            series = [...Array(linesNumber)].map((item, index) => {
+                let newConfig = copy(lineConfig, true)
+                if (index === 0) {
+                    newConfig.itemStyle.color = otherConfCb[lineColor]
+
+                    newConfig.lineStyle.color = "#C3DD41"
+                    return newConfig
+                }
+                newConfig.itemStyle.color = otherConfCb[lineColor]
+
+                newConfig.lineStyle.color = "#5CA6EF"
+
+                return newConfig;
+            });
+        } else {
+            series = [...Array(linesNumber)].map(() => {
+                return lineConfig;
+            });
+        }
+
+        panelConfig.series = series;
+        return panelConfig;
+        },
+        reGenerateChart(option, chartData) {
             const opts = this.get('opts'),
                 echartInstance = this.getChartIns();
 

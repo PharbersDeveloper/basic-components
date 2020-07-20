@@ -1,0 +1,39 @@
+
+        <div class='bp-cascader-title cross-center' {{action 'toggleShow'}}>
+        <span class="select-tag">{{choosedValue}}</span>
+        {{svg-jar selectIcon width='24px' height='24px' class=iconClass}}
+        </div>
+
+        <ul class={{if show 'cascader-list' 'd-none'}}>
+        {{#each data as |city index|}}
+            <div class={{if (bp-eq index curItemIndex) "flex-row main-space-between cascader-list-item-active" "flex-row main-space-between cascader-list-item"}} >
+                <div onclick={{action "addItem" city index }} style="display: flex;align-items: center;">
+                    {{#if (belong-to selectItems city)}}
+                    <span class="checkbox"></span>
+                    {{else if (some-belong-to subData subSelectItems index)}}
+                    <span class="some-checked-box"></span>
+                    {{else}}
+                    <span class="uncheckbox"></span>
+                    {{/if}}
+                </div>
+                <div onclick={{action "showSub" index}} class="flex-1 main-space-between cross-center" style="display: flex;" >
+                    <label for="">{{city}}</label>
+                    {{svg-jar  "down" width='24px' height='24px' class="downRight"}}
+                </div>
+            </div>
+        {{/each}}
+        </ul>
+
+        <ul class={{if subShow 'subSelect' 'd-none'}}>
+        {{#each curSubArea as |city index|}}
+            <div class="flex-row cascader-list-item" onclick={{action "addSubItem" city}}>
+                {{#if (belong-to subSelectItems city)}}
+                    <input type="checkbox" id={{city}} name="list" value={{city}} checked>
+                {{else}}
+                    <input type="checkbox" id={{city}} name="list" value={{city}}>
+                {{/if}}
+                    <label for={{city}} class="flex-1">{{city}}</label>
+            </div>
+        {{/each}}
+        </ul>
+        

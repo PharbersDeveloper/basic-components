@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-menu-item';
+export { default } from 'basic-components-v4/components/bp-menu-item';

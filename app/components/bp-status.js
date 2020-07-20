@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-status';
+export { default } from 'basic-components-v4/components/bp-status';

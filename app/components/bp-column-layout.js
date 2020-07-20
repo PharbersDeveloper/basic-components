@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-column-layout';
+export { default } from 'basic-components-v4/components/bp-column-layout';

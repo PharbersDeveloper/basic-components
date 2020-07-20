@@ -5,8 +5,9 @@ import Component from '@ember/component';import layout from '../templates/compo
             tagName:'button',
             classNames:['bp-button', ''],
             content: 'default',
-            classNameBindings: ['currentType', 'currentDensity'],
+            classNameBindings: ['block:btn-block','currentType', 'currentDensity'],
             attributeBindings: ['disabled:disabled'],
+            block: false,
             disabled: false,text: 'test text',
             type: 'primary',density: 'default',icon: 'edit',
             currentType: computed('type', function () {

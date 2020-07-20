@@ -6,8 +6,12 @@ import { isEmpty, typeOf } from '@ember/utils';
         import { inject as service } from '@ember/service';
         import { all } from 'rsvp';
         import EmberObject from '@ember/object';
+        import { tooltips,otherConfCb } from "../utils/tooltips";
+        import { copy } from '@ember/object/internals';
+    
             export default Component.extend({
             eid: "china-demo-first001",
+store: this.store,
 confReqAdd: "http://192.168.100.25:5555",
 currentProv: "全国",
 onChangeProv: function() {},
@@ -26,30 +30,48 @@ prodName: "Viread",
                 renderer: 'canvas' // canvas of svg
             });
         },
-        didReceiveAttrs() {
-            this._super(...arguments);
-        },
         didUpdateAttrs() {
             this._super(...arguments);
-            const {dataConfig,dataCondition} = this;
-
-            this.generateChartOption(dataConfig, dataCondition);
+            // date / prodName 改变时，将 currentProv 重置为全国。
+            let echart = this.getChartIns()
+            this.onEvents.click({ name: "全国" }, echart)
+            const { dataConfig, dataCondition } = this;
+            if (!isEmpty(dataCondition)) {
+                this.generateChartOption(dataConfig, dataCondition);
+            }
         },
         didInsertElement() {
             this._super(...arguments);
 
             const chartId = this.eid;
             this.set('chartId', chartId)
-            this.get('ajax').request(this.confReqAdd+'/chartsConfig', {
-                method: 'GET',
-                data: chartId
-            }).then(data => {
-                if (!isEmpty(data.id) && !isEmpty(data.condition)) {
+            let chartConfPromise = null
+            if (isEmpty(this.store)) {
+                chartConfPromise = this.get('ajax').request(this.confReqAdd, {
+                    method: 'GET',
+                    data: chartId
+                })
+            } else {
+                chartConfPromise = this.store.findRecord("chart", chartId)
+            }
+
+            chartConfPromise.then(data => {
+                const config = data.styleConfigs
+                const condition = data.dataConfigs
+                if (!isEmpty(data.id) && !isEmpty(condition)) {
+                    // 处理提示框
+                    let tooltipType = config.tooltip.formatter;
+
+                    if (tooltipType in tooltips) {
+                        config.tooltip.formatter = tooltips[tooltipType]
+                    } else {
+                        delete config.tooltip.formatter
+                    }
                     this.setProperties({
-                        dataConfig: data.config,
-                        dataCondition: data.condition
-                      });
-                    this.generateChartOption(data.config, data.condition);
+                        dataConfig: config,
+                        dataCondition: condition
+                    });
+                    this.generateChartOption(config, condition);
                 }
             })
         },
@@ -58,31 +80,34 @@ prodName: "Viread",
             const selector = '#' + this.get('eid'),
                 $el = $(selector),
                 echartInstance = echarts.getInstanceByDom($el[0]);
+
             return echartInstance;
         },
         generateChartOption(chartConfig, cond) {
+            const ajax = this.ajax
+
+            let { prodName, endDate, compName } = this;
             const queryConfig = cond.query
             const qa = queryConfig.address;
-            const queryChartSql = queryConfig.chartSql;
-            const ajax = this.ajax;
+            let queryChartSql = "SELECT PROVINCE, AVG(CURR_MKT_SALES_IN_PROV)  " +
+            "AS MKT_SALES, AVG(EI_MKT_PROV) AS EI FROM result WHERE MKT " +
+            "IN (SELECT MKT FROM result WHERE COMPANY = '" + compName + "' AND " +
+            "DATE = " + endDate + " AND PRODUCT_NAME = '" +
+            prodName + "') AND COMPANY = '" + compName + "' AND DATE = " +
+            endDate + " GROUP BY PROVINCE.keyword"
             const ec = cond.encode;
 
-            chartConfig.tooltip.formatter = function (data) {
-                if (data.name === "") {
-                    return "此省份暂无数据";
-                }
-                return data.name + " : " + data.value
-            }
-            ajax.request(qa + '?tag=row2line&dimensionKeys=' + ec.dimension, {
+            ajax.request(qa + '?tag='+ec.tag+'&dimensionKeys=' + ec.dimension, {
                 method: 'POST',
                 data: JSON.stringify({ "sql": queryChartSql }),
                 dataType: 'json'
             }).then(data => {
-                let length = data[0].length -1
-                let visualMapMaxArr = data.map(ele=>typeof ele[length]==="number"?ele[length]:0)
-                chartConfig.visualMap.max = Math.max.apply(null,visualMapMaxArr)
+                const resultData = isArray(data) ? data : [["PROVINCE_NAME", "EI", "PROV_SALES_VALUE"]]
+                let length = isArray(resultData[0]) ? resultData[0].length - 1 : 0
+                let visualMapMaxArr = resultData.map(ele => typeof ele[length] === "number" ? ele[length] : 0)
+                chartConfig.visualMap.max = Math.max.apply(null, visualMapMaxArr)
 
-                this.updateChartData(chartConfig, data);
+                this.updateChartData(chartConfig, resultData);
             })
         },
 updateChartData(chartConfig, chartData) {

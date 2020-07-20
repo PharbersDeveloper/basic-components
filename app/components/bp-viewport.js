@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-viewport';
+export { default } from 'basic-components-v4/components/bp-viewport';

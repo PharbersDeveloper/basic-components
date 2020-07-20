@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/cp-leaf';
+export { default } from 'basic-components-v4/components/cp-leaf';

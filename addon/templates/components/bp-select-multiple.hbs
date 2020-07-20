@@ -1,0 +1,25 @@
+
+        <div class="bp-input input-tags" onclick={{action "toggleShow" bubbles=false}} style="width:{{width}}px;cursor: text;">
+        {{#each selectArr as |item index|}}
+            <span class="select-input-tag ">{{item}}
+                <div onclick={{action "deleteTag" item bubbles=false}}>
+                    {{svg-jar 'cross' width='12px' height='12px' class='cursor-pointer'}}
+                </div>
+            </span>
+        {{/each}}
+        <span>
+            <span>{{inputValue}}</span>
+            {{input value=inputValue class="select-multiple-input" id=inputId  focus-out="close" focus-in="show"}}
+        </span>
+    </div>
+
+    {{#if show}}
+        {{#if showDataList}}
+        <div class="input-list-tags" style="width:{{width}}px;z-index:999;" tabindex="1">
+            {{#each dataArray as |item index|}}
+                <span onmousedown={{action "chooseItem" index bubbles=false}} class={{if (belong-to selectArr item) "input-list-tags-choosed-span" "input-list-tags-span"}} >{{item}}</span>
+            {{/each}}
+        </div>
+        {{/if}}
+    {{/if}}
+        

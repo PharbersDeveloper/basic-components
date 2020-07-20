@@ -1,0 +1,9 @@
+<div class='pagination-container'>
+<div class='pagination'>
+<span onclick={{action 'changePage' 'pre'}} class={{if (bp-eq curPage 1) 'pagination-unable' 'pagination-able'}}>{{svg-jar 'left' width='24px' height='24px' }}</span>
+{{#each forEachArray as |page index|}}
+<div onclick={{action 'changePage' '' page}} class={{if (bp-eq curPage page) 'pagination-page pagination-active' 'pagination-page'}}>{{page}}</div>
+{{/each}}
+<span onclick={{action 'changePage' 'next'}} class={{if (bp-eq curPage pageArray.length) 'pagination-unable' 'pagination-able'}}>{{svg-jar 'right' width='24px' height='24px' }}</span>
+</div>
+</div>

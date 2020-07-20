@@ -1,1 +1,1 @@
-export { default } from 'basic-components/components/bp-bar-line';
+export { default } from 'basic-components-v4/components/bp-bar-line';
